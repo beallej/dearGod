@@ -79,10 +79,10 @@
 		BD9FE93D1AD8C113007378E7 /* dearGod */ = {
 			isa = PBXGroup;
 			children = (
+				BD9FE9651AD8C670007378E7 /* Controllers */,
+				BD9FE9641AD8C668007378E7 /* Views */,
+				BD9FE9621AD8C64F007378E7 /* Models */,
 				BD9FE9401AD8C113007378E7 /* AppDelegate.swift */,
-				BD9FE9421AD8C113007378E7 /* FirstViewController.swift */,
-				BD9FE9441AD8C113007378E7 /* SecondViewController.swift */,
-				BD9FE9461AD8C113007378E7 /* Main.storyboard */,
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
 				BD9FE93E1AD8C113007378E7 /* Supporting Files */,
@@ -113,6 +113,30 @@
 				BD9FE9571AD8C114007378E7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD9FE9621AD8C64F007378E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		BD9FE9641AD8C668007378E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD9FE9461AD8C113007378E7 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BD9FE9651AD8C670007378E7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD9FE9441AD8C113007378E7 /* SecondViewController.swift */,
+				BD9FE9421AD8C113007378E7 /* FirstViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
