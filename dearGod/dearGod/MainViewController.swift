@@ -39,6 +39,10 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func refresh(){
+        print("fuck you")
+        
+    }
 
 
 }
