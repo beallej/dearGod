@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -186,7 +186,7 @@
                                     <action selector="buttonAction:" destination="DBW-f3-vOn" eventType="touchDown" id="Jo6-eB-Oxj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-v1-ZUL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-v1-ZUL">
                                 <rect key="frame" x="79" y="442" width="330" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -230,6 +230,12 @@
                                 <exclude reference="bUO-6y-CkA"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="3sw-fu-max"/>
+                                <exclude reference="rTs-YR-68Q"/>
+                                <exclude reference="o3V-cp-SK4"/>
+                                <exclude reference="xyw-Pk-cNd"/>
+                                <exclude reference="aIK-OL-4HM"/>
+                                <exclude reference="APb-bU-028"/>
                                 <exclude reference="OAl-ZK-31V"/>
                                 <exclude reference="QHW-Ex-OjZ"/>
                                 <exclude reference="jM4-MN-xYg"/>
@@ -238,15 +244,9 @@
                                 <exclude reference="Jdk-FM-vVl"/>
                                 <exclude reference="jxV-7h-cmf"/>
                                 <exclude reference="uyG-3i-2Qo"/>
-                                <exclude reference="3sw-fu-max"/>
-                                <exclude reference="rTs-YR-68Q"/>
-                                <exclude reference="APb-bU-028"/>
-                                <exclude reference="o3V-cp-SK4"/>
-                                <exclude reference="xyw-Pk-cNd"/>
                                 <exclude reference="0XM-28-fzj"/>
                                 <exclude reference="GaF-tv-zB7"/>
                                 <exclude reference="hLv-e8-Fp8"/>
-                                <exclude reference="aIK-OL-4HM"/>
                                 <exclude reference="IIS-Lv-udh"/>
                             </mask>
                         </variation>
@@ -260,6 +260,12 @@
                                 <include reference="bUO-6y-CkA"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="3sw-fu-max"/>
+                                <include reference="rTs-YR-68Q"/>
+                                <include reference="o3V-cp-SK4"/>
+                                <include reference="xyw-Pk-cNd"/>
+                                <include reference="aIK-OL-4HM"/>
+                                <include reference="APb-bU-028"/>
                                 <include reference="OAl-ZK-31V"/>
                                 <include reference="QHW-Ex-OjZ"/>
                                 <include reference="jM4-MN-xYg"/>
@@ -268,15 +274,9 @@
                                 <include reference="Jdk-FM-vVl"/>
                                 <include reference="jxV-7h-cmf"/>
                                 <include reference="uyG-3i-2Qo"/>
-                                <include reference="3sw-fu-max"/>
-                                <include reference="rTs-YR-68Q"/>
-                                <include reference="APb-bU-028"/>
-                                <include reference="o3V-cp-SK4"/>
-                                <include reference="xyw-Pk-cNd"/>
                                 <include reference="0XM-28-fzj"/>
                                 <include reference="GaF-tv-zB7"/>
                                 <include reference="hLv-e8-Fp8"/>
-                                <include reference="aIK-OL-4HM"/>
                                 <include reference="IIS-Lv-udh"/>
                             </mask>
                         </variation>
@@ -326,6 +326,9 @@
                                     <action selector="buttonAction:" destination="8rJ-Kc-sve" eventType="touchDown" id="9SX-17-sAn"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eo8-Eo-se2">
+                                <rect key="frame" x="31" y="415" width="240" height="128"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-jq-JmJ">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -476,6 +479,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="logo" width="400" height="200"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
