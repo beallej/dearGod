@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */; };
+		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F131581AD8D00B001F689D /* IosCommunicator.swift */; };
 		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
@@ -17,7 +18,6 @@
 		BD9FE94A1AD8C113007378E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE9491AD8C113007378E7 /* Images.xcassets */; };
 		BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */; };
 		BD9FE9591AD8C114007378E7 /* dearGodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9581AD8C114007378E7 /* dearGodTests.swift */; };
-		BD9FE9671AD8CB7B007378E7 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9661AD8CB7B007378E7 /* AnswerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAccessor.swift; sourceTree = "<group>"; };
+		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28F131581AD8D00B001F689D /* IosCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosCommunicator.swift; sourceTree = "<group>"; };
 		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +71,7 @@
 		BD9FE9321AD8C113007378E7 = {
 			isa = PBXGroup;
 			children = (
+				28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */,
 				BD9FE93D1AD8C113007378E7 /* dearGod */,
 				BD9FE9551AD8C114007378E7 /* dearGodTests */,
 				BD9FE93C1AD8C113007378E7 /* Products */,
@@ -252,10 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD9FE9451AD8C113007378E7 /* SecondViewController.swift in Sources */,
+				BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */,
 				283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */,
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
-				BD9FE9431AD8C113007378E7 /* FirstViewController.swift in Sources */,
+				BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */,
 				28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

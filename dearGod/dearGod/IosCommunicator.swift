@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class IosCommunicator {
-    func sendNotification() {
+    func sendNotification(message: String) {
         // todo
     }
     
     func test() {
-        /*
         var c = intToChar(1024)
         println("{" + String(c) + "}")
         println("{" + String(charToInt(c)) + "}")
@@ -31,7 +31,9 @@ class IosCommunicator {
         print("[")
         print(contents2)
         println("]")
-        */
+        
+        let internetStuff = DatabaseAccessor()
+        internetStuff.sendHTTPRequest("pears")
     }
     
     func intToChar(input: Int) -> Character {
@@ -49,6 +51,7 @@ class IosCommunicator {
         var error: NSError?
         return NSFileManager().fileExistsAtPath(filePath!) ? String(contentsOfFile: filePath!, encoding: utf8, error: &error)! : nil
     }
+    
     func saveFile (fileName: String, fileExtension: String, _ content: String, utf8: NSStringEncoding = NSUTF8StringEncoding) -> Bool {
         var error: NSError?
         let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: fileExtension)
