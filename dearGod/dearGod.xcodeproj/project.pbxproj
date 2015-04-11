@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */; };
+		28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F131581AD8D00B001F689D /* IosCommunicator.swift */; };
+		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
 		BD9FE9431AD8C113007378E7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9421AD8C113007378E7 /* FirstViewController.swift */; };
 		BD9FE9451AD8C113007378E7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9441AD8C113007378E7 /* SecondViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAccessor.swift; sourceTree = "<group>"; };
+		28F131581AD8D00B001F689D /* IosCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosCommunicator.swift; sourceTree = "<group>"; };
+		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9FE93F1AD8C113007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9401AD8C113007378E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 				BD9FE9401AD8C113007378E7 /* AppDelegate.swift */,
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
+				28F1315A1AD8E1FD001F689D /* userCode.txt */,
 				BD9FE93E1AD8C113007378E7 /* Supporting Files */,
 			);
 			path = dearGod;
@@ -118,6 +125,8 @@
 		BD9FE9621AD8C64F007378E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */,
+				28F131581AD8D00B001F689D /* IosCommunicator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -219,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */,
 				BD9FE9481AD8C113007378E7 /* Main.storyboard in Resources */,
 				BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */,
 				BD9FE94A1AD8C113007378E7 /* Images.xcassets in Resources */,
@@ -240,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD9FE9451AD8C113007378E7 /* SecondViewController.swift in Sources */,
+				283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */,
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
 				BD9FE9431AD8C113007378E7 /* FirstViewController.swift in Sources */,
+				28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +445,7 @@
 				BD9FE95E1AD8C114007378E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BD9FE95F1AD8C114007378E7 /* Build configuration list for PBXNativeTarget "dearGodTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +454,7 @@
 				BD9FE9611AD8C114007378E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
