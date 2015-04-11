@@ -10,18 +10,33 @@ import UIKit
 import QuartzCore
 
 class AnswerViewController: UIViewController, UITextViewDelegate {
-    @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var holyAnswer: UILabel!
     @IBOutlet weak var answerText: UITextView!
+    @IBOutlet weak var answerLabel: UILabel!
    
     @IBOutlet weak var passB: UIButton!
     @IBOutlet weak var submitB: UIButton!
     let placeholder = "Enter your answer here..."
     
+    var timer = NSTimer()
+    var counter = 5
+    
+    func counterUpdate() {
+        if counter != -1{
+            timeLabel.text=String(counter--)
+        }
+        else {
+            timeLabel.text="Time's Up!"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = sharedData.backgroundColor        
+        self.view.backgroundColor = sharedData.backgroundColor
+        timeLabel.text = String(counter)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
         self.answerText.delegate = self
         self.answerText.text = self.placeholder
         self.answerText.textColor = UIColor.grayColor()
