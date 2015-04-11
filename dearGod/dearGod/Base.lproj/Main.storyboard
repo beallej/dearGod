@@ -326,7 +326,7 @@
                                     <action selector="buttonAction:" destination="8rJ-Kc-sve" eventType="touchDown" id="9SX-17-sAn"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eo8-Eo-se2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="eo8-Eo-se2">
                                 <rect key="frame" x="31" y="415" width="240" height="128"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-jq-JmJ">
@@ -479,7 +479,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="logo" width="400" height="200"/>
+        <image name="logo2" width="400" height="200"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

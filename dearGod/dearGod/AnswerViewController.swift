@@ -74,10 +74,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBAction func buttonAction(sender: UIButton) {
         if sender==self.submitB{
             timer.invalidate()
-            counter = 900
-            timeLabel.text = String(counter)
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
-            
             sharedData.changePoints(10)
             self.holyAnswer.text=sharedData.holyPoints
             self.textViewDidEndEditing(self.answerText)
