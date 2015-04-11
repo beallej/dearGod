@@ -101,6 +101,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(textView: UITextView) {
         textView.text = ""
         textView.textColor = UIColor.blackColor()
+        self.timer.invalidate()
         
         
     }
