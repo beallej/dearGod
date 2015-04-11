@@ -3,3 +3,4 @@
 //
 
 #import "JSONConverter.h"
+#import "QuickAnimation.h"
