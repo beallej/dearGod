@@ -22,10 +22,27 @@ class DatabaseAccessor {
     
     func processHTTPRequest(data: NSData) {
         var response = NSString(data: data, encoding: NSUTF8StringEncoding)!
-        println(response)
+        // println(response)
         
         // var myConverter : JSONConverter
         // myConverter.conver(data)
         
+        // parseJSON(data);
+        
+        var stuff : JSONConverter = JSONConverter()
+        var dic : NSDictionary = stuff.JSONToDic(data)
+        
+        var q = 5;
+        q = 3;
+    }
+    
+    func getJSON(urlToRequest: String) -> NSData{
+        return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
+    }
+    
+    func parseJSON(inputData: NSData) -> NSDictionary{
+        var error: NSError?
+        var boardsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+        return boardsDictionary
     }
 }

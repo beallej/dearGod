@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */; };
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
+		28D9C2FD1AD9528F00314E5E /* JSONConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9C2FC1AD9528F00314E5E /* JSONConverter.m */; };
 		28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F131581AD8D00B001F689D /* IosCommunicator.swift */; };
 		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
@@ -35,6 +36,9 @@
 /* Begin PBXFileReference section */
 		283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAccessor.swift; sourceTree = "<group>"; };
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		28D9C2FA1AD9528E00314E5E /* dearGod-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dearGod-Bridging-Header.h"; sourceTree = "<group>"; };
+		28D9C2FB1AD9528F00314E5E /* JSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONConverter.h; sourceTree = "<group>"; };
+		28D9C2FC1AD9528F00314E5E /* JSONConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONConverter.m; sourceTree = "<group>"; };
 		28F131581AD8D00B001F689D /* IosCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosCommunicator.swift; sourceTree = "<group>"; };
 		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,7 @@
 				BD9FE9641AD8C668007378E7 /* Views */,
 				BD9FE9621AD8C64F007378E7 /* Models */,
 				BD9FE9401AD8C113007378E7 /* AppDelegate.swift */,
+				28D9C2FA1AD9528E00314E5E /* dearGod-Bridging-Header.h */,
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
 				28F1315A1AD8E1FD001F689D /* userCode.txt */,
@@ -136,6 +141,8 @@
 			children = (
 				283FC9A01AD8CAA30056A7EE /* DatabaseAccessor.swift */,
 				28F131581AD8D00B001F689D /* IosCommunicator.swift */,
+				28D9C2FB1AD9528F00314E5E /* JSONConverter.h */,
+				28D9C2FC1AD9528F00314E5E /* JSONConverter.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
 				BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */,
 				28F131591AD8D00B001F689D /* IosCommunicator.swift in Sources */,
+				28D9C2FD1AD9528F00314E5E /* JSONConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,9 +396,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = dearGod/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dearGod/dearGod-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -398,9 +409,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = dearGod/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dearGod/dearGod-Bridging-Header.h";
 			};
 			name = Release;
 		};
