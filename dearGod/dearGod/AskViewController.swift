@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class AskViewController: UIViewController, UITextViewDelegate {
 
@@ -19,6 +20,9 @@ class AskViewController: UIViewController, UITextViewDelegate {
     @IBAction func buttonAction(sender: UIButton) {
         if sender == self.submitButton{
             // Submit Question to Oracle
+            //sharedData.brain.sendHTTPRequest(askField.text)
+            sharedData.changePoints(-10)
+            self.holyAsk.text=sharedData.holyPoints
             self.textViewDidEndEditing(self.askField)
         }
         else if sender == self.cancelButton{
@@ -26,6 +30,11 @@ class AskViewController: UIViewController, UITextViewDelegate {
             
             
         }
+        
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.holyAsk.text=sharedData.holyPoints
         
     }
     
@@ -43,7 +52,10 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.holyAsk.text = self.getHolyPoints()
+        self.view.backgroundColor = sharedData.backgroundColor
+        self.holyAsk.text = sharedData.holyPoints
+        self.askField.clipsToBounds = true
+        self.askField.layer.cornerRadius = 10.0
         self.askField.delegate = self
         self.askField.text = self.placeholder
         self.askField.textColor = UIColor.grayColor()
@@ -54,11 +66,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func getHolyPoints()->String{
-        var comm : Brain = Brain()
-        return comm.openFile("holyPoints", fileExtension: "txt")!
-        
-    }
+    
 
 
 

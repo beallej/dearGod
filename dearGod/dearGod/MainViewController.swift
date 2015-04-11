@@ -17,7 +17,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.holyView.text = self.getHolyPoints()
+        self.view.backgroundColor = sharedData.backgroundColor
+        self.tableView.backgroundColor = sharedData.backgroundColor
         self.tableView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
         
         
@@ -27,16 +28,17 @@ class MainViewController: UIViewController {
         self.tableView.addSubview(refreshControl)
 
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.holyView.text=sharedData.holyPoints
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func getHolyPoints()->String{
-        var comm : Brain = Brain()
-        return comm.openFile("holyPoints", fileExtension: "txt")!
-        
-    }
+    
 
 
 }

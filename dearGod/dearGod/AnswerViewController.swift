@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var timer: UILabel!
@@ -20,17 +21,25 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = sharedData.backgroundColor
-        self.holyAnswer.text=getHolyPoints()
+        self.view.backgroundColor = sharedData.backgroundColor        
         self.answerText.delegate = self
         self.answerText.text = self.placeholder
         self.answerText.textColor = UIColor.grayColor()
+        self.answerText.clipsToBounds = true
+        self.answerText.layer.cornerRadius = 10.0
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.holyAnswer.text=sharedData.holyPoints
+
     }
     
     @IBAction func buttonAction(sender: UIButton) {
         if sender==self.submitB{
+            sharedData.changePoints(10)
+            self.holyAnswer.text=sharedData.holyPoints
             self.textViewDidEndEditing(self.answerText)
         }
         else if sender==self.passB{
@@ -53,11 +62,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    func getHolyPoints()->String{
-        var comm : Brain = Brain()
-        return comm.openFile("holyPoints", fileExtension: "txt")!
-        
     }
 
 
