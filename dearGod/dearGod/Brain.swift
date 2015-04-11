@@ -111,18 +111,43 @@ class Brain {
     */
     func processHTTPRequest(response: NSData, requestType: RequestType) {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-        if(requestType == RequestType.NewQuestion) {
-            var dic : NSDictionary? = converter.JSONToDic(response);
-        }
-        else if(requestType == RequestType.AnswerQuestion) {
-            var err : NSErrorPointer = NSErrorPointer()
-            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
-        }
-        else if(requestType == RequestType.GetAllQuestions) {
-            var dic : NSDictionary? = converter.JSONToDic(response)
+
+        if(response.length > 5) {
+            if(requestType == RequestType.NewQuestion) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    
+                }
+            }
+            else if(requestType == RequestType.AnswerQuestion) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var answer : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray
+                {
+                }
+            }
+            else if(requestType == RequestType.GetAllQuestions) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var questions = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    self.saveQuestions(questions)
+                }
+                
+                
+            }
+            else {
+            }
         }
         else {
+            // response is probably an empty JSON
         }
+    }
+    
+    func saveQuestions(questions : NSArray){
+        for question in questions {
+            if !sharedData.questions.containsObject(question){
+                sharedData.questions.addObject(question)
+            }
+        }
+        
     }
     
     /*
