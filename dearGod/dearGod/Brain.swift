@@ -73,6 +73,7 @@ class Brain {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             if let constVar = data {
                 self.processHTTPRequest(data, requestType: requestType)
+                
             }
             else {
                 // data is "nil" - do nothing
@@ -110,33 +111,43 @@ class Brain {
     */
     func processHTTPRequest(response: NSData, requestType: RequestType) {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-        if(response.length < 5) {
-            // probably an empty JSON
-            return;
-        }
-        
-        let resstr = NSString(data: response, encoding: NSUTF8StringEncoding)
-        if(resstr?.substringWithRange(NSMakeRange(0, 9)) == "<!DOCTYPE") {
-            // probably a File Not Found error
-            return;
-        }
 
-        if(requestType == RequestType.NewQuestion) {
-            // var dic : Array = converter.JSONToDic(response);
-            var err : NSErrorPointer = NSErrorPointer()
-            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
-        }
-        else if(requestType == RequestType.AnswerQuestion) {
-            var err : NSErrorPointer = NSErrorPointer()
-            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
-        }
-        else if(requestType == RequestType.GetAllQuestions) {
-            // var dic : Array = converter.JSONToDic(response);
-            var err : NSErrorPointer = NSErrorPointer()
-            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
+        if(response.length > 5) {
+            if(requestType == RequestType.NewQuestion) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    
+                }
+            }
+            else if(requestType == RequestType.AnswerQuestion) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var answer : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray
+                {
+                }
+            }
+            else if(requestType == RequestType.GetAllQuestions) {
+                var err : NSErrorPointer = NSErrorPointer()
+                if var questions = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    self.saveQuestions(questions)
+                }
+                
+                
+            }
+            else {
+            }
+
         }
         else {
         }
+    }
+    
+    func saveQuestions(questions : NSArray){
+        for question in questions {
+            if !sharedData.questions.containsObject(question){
+                sharedData.questions.addObject(question)
+            }
+        }
+        
     }
     
     /*

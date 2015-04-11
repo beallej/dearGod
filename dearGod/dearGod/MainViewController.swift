@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //sharedData.brain.getAllQuestions()
         self.view.backgroundColor = sharedData.backgroundColor
         self.tableView.backgroundColor = sharedData.backgroundColor
         self.tableView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
@@ -26,8 +27,10 @@ class MainViewController: UIViewController {
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
-        
         sharedData.brain.getAllQuestions()
+        for question in sharedData.questions{
+            
+        }
         
 
     }
@@ -43,8 +46,7 @@ class MainViewController: UIViewController {
     }
     
     func refresh(){
-        print("fuck you")
-        
+        print("meow")
     }
 
 
