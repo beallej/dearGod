@@ -15,27 +15,29 @@ class Brain {
         converter = JSONConverter()
     }
     
-    /*
-    * This method sends a new question to the server.
-    */
-    func askQuestion(question: String) {
-        // TODO
-    }
-    
-    
-    /*
-    * This method is called after the app is opened. We are using it to test code. Remove this method before deployment!
-    */
-    func test() {
-        var ip : String = getIP()
-        
+    func getID() {
         var dic : [String:String]
-        dic = ["id": "lamesauce", "question": "Is Alice happy?", "answer" : "quails"]
-        
-        postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
-        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.AnswerQuestion)
-        putRequest("http://deargod.herokuapp.com/api/questions/55295490e565850300000009", requestDic: dic, requestType: RequestType.GetAllQuestions)
+        dic = ["ip": getIP()]
+        postRequest("http://deargod.herokuapp.com/api/users", requestDic: dic, requestType: RequestType.NewQuestion)
     }
+    
+    func askQuestion(question: String) {
+        var dic : [String:String]
+        dic = ["question": question]
+        postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
+    }
+    
+    func getAllQuestions() {
+        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.NewQuestion)
+    }
+    
+    func answerQuestion(questionID: String, answer: String) {
+        var dic : [String:String]
+        dic = ["answer": answer]
+        postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.NewQuestion)
+    }
+    
+    
     
     
     func getRequest(requestString: String, requestType: RequestType) {
