@@ -15,12 +15,6 @@ class Brain {
         converter = JSONConverter()
     }
     
-    func getID() {
-        var dic : [String:String]
-        dic = ["ip": getIP()]
-        postRequest("http://deargod.herokuapp.com/api/users", requestDic: dic, requestType: RequestType.NewQuestion)
-    }
-    
     func askQuestion(question: String) {
         var dic : [String:String]
         dic = ["question": question]
@@ -28,17 +22,21 @@ class Brain {
     }
     
     func getAllQuestions() {
-        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.NewQuestion)
+        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.GetAllQuestions)
     }
     
     func answerQuestion(questionID: String, answer: String) {
         var dic : [String:String]
         dic = ["answer": answer]
-        postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.NewQuestion)
+        postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
     }
     
     
-    
+    func getID() {
+        var dic : [String:String]
+        dic = ["ip": getIP()]
+        postRequest("http://deargod.herokuapp.com/api/users", requestDic: dic, requestType: RequestType.NewQuestion)
+    }
     
     func getRequest(requestString: String, requestType: RequestType) {
         var httpRequestString : String = requestString
