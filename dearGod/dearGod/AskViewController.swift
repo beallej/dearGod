@@ -22,7 +22,6 @@ class AskViewController: UIViewController, UITextViewDelegate {
             self.textViewDidEndEditing(self.askField)
         }
         else if sender == self.cancelButton{
-            
             self.textViewDidEndEditing(self.askField)           
             
             
@@ -31,9 +30,9 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        self.askField.text = self.placeholder
-        self.askField.textColor = UIColor.grayColor()
-        self.askField.endEditing(true)
+        textView.text = self.placeholder
+        textView.textColor = UIColor.grayColor()
+        textView.endEditing(true)
         
     }
     func textViewDidBeginEditing(textView: UITextView) {
