@@ -14,6 +14,7 @@ class IosCommunicator {
     }
     
     func test() {
+        /*
         var c = intToChar(1024)
         println("{" + String(c) + "}")
         println("{" + String(charToInt(c)) + "}")
@@ -30,6 +31,7 @@ class IosCommunicator {
         print("[")
         print(contents2)
         println("]")
+        */
     }
     
     func intToChar(input: Int) -> Character {
