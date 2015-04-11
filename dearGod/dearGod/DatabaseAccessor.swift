@@ -10,6 +10,12 @@ import Foundation
 
 class DatabaseAccessor {
     
+    let converter : JSONConverter;
+    
+    init()  {
+        converter = JSONConverter()
+    }
+    
     func sendHTTPRequest(requestString: String) {
         let url = NSURL(string: "http://deargod.herokuapp.com/api/questions")
         
@@ -20,18 +26,10 @@ class DatabaseAccessor {
         task.resume()
     }
     
-    func processHTTPRequest(data: NSData) {
-        var response = NSString(data: data, encoding: NSUTF8StringEncoding)!
-        // println(response)
+    func processHTTPRequest(response: NSData) {
+        var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
         
-        var converter : JSONConverter = JSONConverter()
-        
-        var dic : Dictionary = converter.JSONToDic(data);
-        
-        
-        
-        
-        var quail = 52;
-        quail = 13;
+        // convert from NSData to NSArray containing 1 or more NSDictionary objects
+        var dic : NSArray = converter.JSONToDic(response);
     }
 }

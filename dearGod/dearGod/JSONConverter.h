@@ -10,7 +10,7 @@
 
 @interface JSONConverter : NSObject
 
-- (NSDictionary*) JSONToDic: (NSData*) data;
+- (NSArray*) JSONToDic: (NSData*) data;
 - (NSData*) dicToJSON: (NSDictionary*) dic;
 
 @end

@@ -10,8 +10,11 @@
 
 @implementation JSONConverter
 
-- (NSDictionary*) JSONToDic: (NSData*) data {
-    return @{@"one" : @"alpha", @"two" : @"beta", @"three" : @"gamma"};
+- (NSArray*) JSONToDic: (NSData*) data {
+    NSArray *rtn = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    return rtn;
+    
+    // return @{@"one" : @"alpha", @"two" : @"beta", @"three" : @"gamma"};
 }
 
 - (NSData*) dicToJSON: (NSDictionary*) dic {
