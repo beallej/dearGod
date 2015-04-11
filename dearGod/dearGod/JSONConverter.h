@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 
 @interface JSONConverter : NSObject
 
-- (NSArray*) JSONToDic: (NSData*) data;
+- (NSDictionary*) JSONToDic: (NSData*) data;
 - (NSData*) dicToJSON: (NSDictionary*) dic;
 
 @end
