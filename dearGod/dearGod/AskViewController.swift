@@ -55,7 +55,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     func getHolyPoints()->String{
-        var comm : IosCommunicator = IosCommunicator()
+        var comm : Brain = Brain()
         return comm.openFile("holyPoints", fileExtension: "txt")!
         
     }

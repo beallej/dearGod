@@ -1,15 +1,37 @@
 //
-//  IosCommunicator.swift
+//  Brain.swift
 //  dearGod
 //
-//  Created by Thomas Redding on 4/10/15.
+//  Created by Thomas Redding on 4/11/15.
 //  Copyright (c) 2015 Josie Bealle. All rights reserved.
 //
 
 import Foundation
-import UIKit
 
-class IosCommunicator {
+class Brain {
+    let converter : JSONConverter;
+    
+    init()  {
+        converter = JSONConverter()
+    }
+    
+    func sendHTTPRequest(requestString: String) {
+        let url = NSURL(string: requestString)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+            self.processHTTPRequest(data)
+        }
+        
+        task.resume()
+    }
+    
+    func processHTTPRequest(response: NSData) {
+        var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
+        
+        // convert from NSData to NSArray containing 1 or more NSDictionary objects
+        var dic : NSArray = converter.JSONToDic(response);
+    }
+    
     func sendNotification(message: String) {
         // todo
     }
@@ -32,10 +54,8 @@ class IosCommunicator {
         print("[")
         print(contents2)
         println("]")
-        
-        let internetStuff = DatabaseAccessor()
-        internetStuff.sendHTTPRequest("pears")
         */
+        sendHTTPRequest("http://deargod.herokuapp.com/api/questions")
     }
     
     func intToChar(input: Int) -> Character {
