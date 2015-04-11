@@ -10,8 +10,10 @@ import UIKit
 
 class AnswerViewController: UIViewController {
     @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var holyAnswer: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.holyAnswer.text=getHolyPoints()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -20,6 +22,12 @@ class AnswerViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func getHolyPoints()->String{
+        var comm : IosCommunicator = IosCommunicator()
+        return comm.openFile("holyPoints", fileExtension: "txt")!
+        
+    }
+
 
     
 }

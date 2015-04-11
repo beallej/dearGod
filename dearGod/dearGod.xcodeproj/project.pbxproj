@@ -19,6 +19,7 @@
 		BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */; };
 		BD9FE9591AD8C114007378E7 /* dearGodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9581AD8C114007378E7 /* dearGodTests.swift */; };
 		BD9FE96D1AD90247007378E7 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */; };
+		BD9FE96F1AD91202007378E7 /* holyPoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE96E1AD91202007378E7 /* holyPoints.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		BD9FE9571AD8C114007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9581AD8C114007378E7 /* dearGodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dearGodTests.swift; sourceTree = "<group>"; };
 		BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		BD9FE96E1AD91202007378E7 /* holyPoints.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = holyPoints.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
 				28F1315A1AD8E1FD001F689D /* userCode.txt */,
+				BD9FE96E1AD91202007378E7 /* holyPoints.txt */,
 				BD9FE93E1AD8C113007378E7 /* Supporting Files */,
 			);
 			path = dearGod;
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */,
+				BD9FE96F1AD91202007378E7 /* holyPoints.txt in Resources */,
 				BD9FE9481AD8C113007378E7 /* Main.storyboard in Resources */,
 				BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */,
 				BD9FE94A1AD8C113007378E7 /* Images.xcassets in Resources */,

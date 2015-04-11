@@ -13,6 +13,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var holyAsk: UILabel!
     @IBOutlet weak var askField: UITextView!
     let placeholder = "Ask His/Her Holiness Here..."
     @IBAction func buttonAction(sender: UIButton) {
@@ -43,6 +44,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.holyAsk.text = self.getHolyPoints()
         self.askField.delegate = self
         self.askField.text = self.placeholder
         self.askField.textColor = UIColor.grayColor()
@@ -53,6 +55,12 @@ class AskViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func getHolyPoints()->String{
+        var comm : IosCommunicator = IosCommunicator()
+        return comm.openFile("holyPoints", fileExtension: "txt")!
+        
+    }
+
 
 
 }
