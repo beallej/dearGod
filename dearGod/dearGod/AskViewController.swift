@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AskViewController: UIViewController {
+class AskViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -18,15 +18,34 @@ class AskViewController: UIViewController {
     @IBAction func buttonAction(sender: UIButton) {
         if sender == self.submitButton{
             // Submit Question to Oracle
+            self.textViewDidEndEditing(self.askField)
         }
         else if sender == self.cancelButton{
-            self.askField.text == self.placeholder
+            
+            self.textViewDidEndEditing(self.askField)           
+            
+            
         }
         
     }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        self.askField.text = self.placeholder
+        self.askField.textColor = UIColor.grayColor()
+        self.askField.endEditing(true)
+        
+    }
+    func textViewDidBeginEditing(textView: UITextView) {
+        textView.text = ""
+        textView.textColor = UIColor.blackColor()
+        
+    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.askField.delegate = self
+        self.askField.text = self.placeholder
+        self.askField.textColor = UIColor.grayColor()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

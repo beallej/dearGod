@@ -166,6 +166,9 @@
                                 <state key="normal" title="Clear">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonAction:" destination="8rJ-Kc-sve" eventType="touchDown" id="9SX-17-sAn"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-jq-JmJ">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
