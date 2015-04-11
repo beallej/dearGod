@@ -15,6 +15,7 @@ class IosCommunicator {
     }
     
     func test() {
+        /*
         var c = intToChar(1024)
         println("{" + String(c) + "}")
         println("{" + String(charToInt(c)) + "}")
@@ -34,6 +35,7 @@ class IosCommunicator {
         
         let internetStuff = DatabaseAccessor()
         internetStuff.sendHTTPRequest("pears")
+        */
     }
     
     func intToChar(input: Int) -> Character {
