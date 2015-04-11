@@ -40,11 +40,17 @@ class Brain {
         var httpRequestString : String = requestString + (dataToAppend as String)
         let url = NSURL(string: httpRequestString)
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data, requestType: requestType)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        if(requestType == RequestType.NewQuestion) {
+            request.HTTPMethod = "POST"
+        }
+        else {
+            request.HTTPMethod = "GET"
         }
         
-        task.resume()
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+        }
     }
     
     /*
@@ -55,11 +61,17 @@ class Brain {
         // just send requestString
         let url = NSURL(string: requestString)
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data, requestType: requestType)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        if(requestType == RequestType.NewQuestion) {
+            request.HTTPMethod = "POST"
+        }
+        else {
+            request.HTTPMethod = "GET"
         }
         
-        task.resume()
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+        }
     }
     
     /*
