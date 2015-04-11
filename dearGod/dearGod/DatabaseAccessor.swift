@@ -17,7 +17,7 @@ class DatabaseAccessor {
     }
     
     func sendHTTPRequest(requestString: String) {
-        let url = NSURL(string: "http://deargod.herokuapp.com/api/questions")
+        let url = NSURL(string: requestString)
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             self.processHTTPRequest(data)

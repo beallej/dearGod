@@ -34,7 +34,7 @@ class IosCommunicator {
         println("]")
         */
         let internetStuff = DatabaseAccessor()
-        internetStuff.sendHTTPRequest("pears")
+        internetStuff.sendHTTPRequest("http://deargod.herokuapp.com/api/questions")
 
     }
     
