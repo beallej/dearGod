@@ -73,6 +73,7 @@ class Brain {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             if let constVar = data {
                 self.processHTTPRequest(data, requestType: requestType)
+                
             }
             else {
                 // data is "nil" - do nothing
@@ -118,7 +119,7 @@ class Brain {
             var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
         }
         else if(requestType == RequestType.GetAllQuestions) {
-            var dic : NSDictionary? = converter.JSONToDic(response);
+            var dic : NSDictionary? = converter.JSONToDic(response)
         }
         else {
         }

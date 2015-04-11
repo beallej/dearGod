@@ -23,7 +23,9 @@ class AskViewController: UIViewController, UITextViewDelegate {
             //sharedData.brain.sendHTTPRequest(askField.text)
             sharedData.changePoints(-10)
             self.holyAsk.text=sharedData.holyPoints
+            let question = self.askField.text
             self.textViewDidEndEditing(self.askField)
+            //sharedData.brain.askQuestion(question)
         }
         else if sender == self.cancelButton{
             self.textViewDidEndEditing(self.askField)           

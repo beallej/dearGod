@@ -18,6 +18,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var passB: UIButton!
     @IBOutlet weak var submitB: UIButton!
     let placeholder = "Enter your answer here..."
+    let questionID = "69"
     
     var timer = NSTimer()
     var counter = 5
@@ -76,6 +77,8 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             timer.invalidate()
             sharedData.changePoints(10)
             self.holyAnswer.text=sharedData.holyPoints
+            let answer = self.answerText.text
+            //sharedData.brain.answerQuestion(questionID, answer: answer)
             self.textViewDidEndEditing(self.answerText)
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 

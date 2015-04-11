@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //sharedData.brain.getAllQuestions()
         self.view.backgroundColor = sharedData.backgroundColor
         self.tableView.backgroundColor = sharedData.backgroundColor
         self.tableView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
@@ -40,8 +41,7 @@ class MainViewController: UIViewController {
     }
     
     func refresh(){
-        print("fuck you")
-        
+        print("meow")
     }
 
 
