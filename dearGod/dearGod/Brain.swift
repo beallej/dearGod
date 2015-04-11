@@ -31,6 +31,10 @@ class Brain {
         postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
     }
     
+    func getQuestion(questionID: String) {
+        getRequest("http://deargod.herokuapp.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
+    }
+    
     
     func getID() {
         var dic : [String:String]
@@ -113,29 +117,21 @@ class Brain {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
 
         if(response.length > 5) {
-            if(requestType == RequestType.NewQuestion) {
-                var err : NSErrorPointer = NSErrorPointer()
-                if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
-                    
+            var err : NSErrorPointer = NSErrorPointer()
+            if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                if(requestType == RequestType.NewQuestion) {
+                    // TODO
+                }
+                else if(requestType == RequestType.AnswerQuestion) {
+                    // TODO
+                }
+                else if(requestType == RequestType.GetAllQuestions) {
+                    // TODO
+                }
+                else if(requestType == RequestType.GetQuestion) {
+                    // TODO
                 }
             }
-            else if(requestType == RequestType.AnswerQuestion) {
-                var err : NSErrorPointer = NSErrorPointer()
-                if var answer : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray
-                {
-                }
-            }
-            else if(requestType == RequestType.GetAllQuestions) {
-                var err : NSErrorPointer = NSErrorPointer()
-                if var questions = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
-                    self.saveQuestions(questions)
-                }
-                
-                
-            }
-            else {
-            }
-
         }
         else {
         }
