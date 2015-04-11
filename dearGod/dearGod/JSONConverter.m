@@ -10,13 +10,15 @@
 
 @implementation JSONConverter
 
-- (NSArray*) JSONToDic: (NSData*) data {
-    NSArray *rtn = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    return rtn;
+- (NSObject*) JSONToDic: (NSData*) data {
+    NSError* error=nil;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    return dic;
 }
 
 - (NSData*) dicToJSON: (NSDictionary*) dic {
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
     return jsonData;
 }
 

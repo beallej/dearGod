@@ -16,38 +16,35 @@ class Brain {
     }
     
     /*
-    * This method is called after the app is opened. We are using it to test code. Remove this method before deployment!
-    */
-    func test() {
-        sendHTTPRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.NewQuestion)
-    }
-    
-    /*
     * This method sends a new question to the server.
     */
     func askQuestion(question: String) {
         // TODO
     }
     
+    
     /*
-    * This method sends an HTTP request and runs processHTTPRequest on the response. The object "requestData" is encoded as UTF-8 and appended to requestString prior to it being sent.
-    * @param requestString the string to send to the server
-    * @param requestData the data to be encoded and sent to the server
-    * @param requestType the type of request (i.e. creating a new question, answering a question, etc.)
+    * This method is called after the app is opened. We are using it to test code. Remove this method before deployment!
     */
-    func sendHTTPRequest(requestString: String, requestData: NSData, requestType: RequestType) {
-        // append requestData to requestString
-        var dataToAppend : NSString = NSString(data: requestData, encoding: NSUTF8StringEncoding)!
-        var httpRequestString : String = requestString + (dataToAppend as String)
-        let url = NSURL(string: httpRequestString)
+    func test() {
+        var ip : String = getIP()
         
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
-        if(requestType == RequestType.NewQuestion) {
-            request.HTTPMethod = "POST"
-        }
-        else {
-            request.HTTPMethod = "GET"
-        }
+        var dic : [String:String]
+        dic = ["id": "lamesauce", "question": "Is Alice happy?", "answer" : "quails"]
+        
+        postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
+        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.AnswerQuestion)
+        putRequest("http://deargod.herokuapp.com/api/questions/55295490e565850300000009", requestDic: dic, requestType: RequestType.GetAllQuestions)
+    }
+    
+    
+    func getRequest(requestString: String, requestType: RequestType) {
+        var httpRequestString : String = requestString
+        let url = NSURL(string: httpRequestString)
+        var request : NSMutableURLRequest
+        request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             if let constVar = data {
@@ -59,22 +56,43 @@ class Brain {
         }
     }
     
-    /*
-    * This method sends an HTTP request and runs processHTTPRequest on the response.
-    * @param requestString the string to send to the server
-    * @param requestType the type of request (i.e. creating a new question, answering a question, etc.)
-    */
-    func sendHTTPRequest(requestString: String, requestType: RequestType) {
-        // just send requestString
-        let url = NSURL(string: requestString)
+    
+    func postRequest(requestString: String, requestDic: NSDictionary, requestType: RequestType) {
+        let dic: AnyObject? = requestDic.copy();
+        var httpRequestString : String = requestString
+        var data = converter.dicToJSON(dic as! [String : String])
         
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
-        if(requestType == RequestType.NewQuestion) {
-            request.HTTPMethod = "POST"
+        let url = NSURL(string: httpRequestString)
+        var request : NSMutableURLRequest
+        request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        var jsonData = converter.dicToJSON(dic as! [String : String])
+        request.HTTPBody = jsonData;
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            if let constVar = data {
+                self.processHTTPRequest(data, requestType: requestType)
+            }
+            else {
+                // data is "nil" - do nothing
+            }
         }
-        else {
-            request.HTTPMethod = "GET"
-        }
+    }
+    
+    
+    func putRequest(requestString: String, requestDic: NSDictionary, requestType: RequestType) {
+        let dic: AnyObject? = requestDic.copy();
+        var httpRequestString : String = requestString
+        var data = converter.dicToJSON(dic as! [String : String])
+        
+        let url = NSURL(string: httpRequestString)
+        var request : NSMutableURLRequest
+        request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "PUT"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        var jsonData = converter.dicToJSON(dic as! [String : String])
+        request.HTTPBody = jsonData;
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             if let constVar = data {
@@ -91,24 +109,40 @@ class Brain {
     * @param response the data received from the server
     */
     func processHTTPRequest(response: NSData, requestType: RequestType) {
-        // var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
-        
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-        var dic : NSArray? = converter.JSONToDic(response);
-        if let constVar = dic {
-            if(requestType == RequestType.NewQuestion) {
-                // TODO
-            }
-            else if(requestType == RequestType.AnswerQuestion) {
-                // TODO
-            }
-            else {
-                // TODO
-            }
+        if(requestType == RequestType.NewQuestion) {
+            var dic : NSDictionary? = converter.JSONToDic(response);
+        }
+        else if(requestType == RequestType.AnswerQuestion) {
+            var err : NSErrorPointer = NSErrorPointer()
+            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
+        }
+        else if(requestType == RequestType.GetAllQuestions) {
+            var dic : NSDictionary? = converter.JSONToDic(response);
         }
         else {
-            // dic is "nil", so we just ignore it
         }
+    }
+    
+    /*
+    * Finds the device's IP address
+    * @return the IP address as a string
+    */
+    func getIP() -> String {
+        let host = CFHostCreateWithName(nil,"www.google.com").takeRetainedValue();
+        CFHostStartInfoResolution(host, .Addresses, nil);
+        var success: Boolean = 0;
+        let addresses = CFHostGetAddressing(host, &success).takeUnretainedValue() as NSArray;
+        if (addresses.count > 0) {
+            let theAddress = addresses[0] as! NSData;
+            var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
+            if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length), &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+                if let numAddress = String.fromCString(hostname) {
+                    return numAddress
+                }
+            }
+        }
+        return ""
     }
     
     /*
