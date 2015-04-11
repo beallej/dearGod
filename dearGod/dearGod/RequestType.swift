@@ -11,4 +11,5 @@ import Foundation
 enum RequestType {
     case NewQuestion
     case AnswerQuestion
+    case GetAllQuestions
 }
