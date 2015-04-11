@@ -11,6 +11,7 @@
 		281309201AD95BF600D6B5BF /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2813091F1AD95BF600D6B5BF /* Brain.swift */; };
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
+		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
 		BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9421AD8C113007378E7 /* MainViewController.swift */; };
 		BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9441AD8C113007378E7 /* AskViewController.swift */; };
@@ -40,6 +41,7 @@
 		2813091F1AD95BF600D6B5BF /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
+		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9FE93F1AD8C113007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9401AD8C113007378E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				2813091D1AD9570200D6B5BF /* JSONConverter.m */,
 				2813091B1AD9570100D6B5BF /* dearGod-Bridging-Header.h */,
 				BD9FE98B1AD95D7A007378E7 /* Globals.swift */,
+				28FF94391AD965D3001EBA2B /* RequestType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */,
 				BD9FE98C1AD95D7A007378E7 /* Globals.swift in Sources */,
 				2813091E1AD9570200D6B5BF /* JSONConverter.m in Sources */,
+				28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

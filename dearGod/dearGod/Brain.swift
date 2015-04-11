@@ -19,10 +19,11 @@ class Brain {
     * This method is called after the app is opened. We are using it to test code. Remove this method before deployment!
     */
     func test() {
-        sendHTTPRequest("http://deargod.herokuapp.com/api/questions")
+        sendHTTPRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.NewQuestion)
     }
     
     /*
+    * This method sends a new question to the server.
     */
     func askQuestion(question: String) {
         
@@ -33,14 +34,14 @@ class Brain {
     * @param requestString the string to send to the server
     * @param requestData the data to be encoded and sent to the server
     */
-    func sendHTTPRequest(requestString: String, requestData: NSData) {
+    func sendHTTPRequest(requestString: String, requestData: NSData, requestType: RequestType) {
         // append requestData to requestString
         var dataToAppend : NSString = NSString(data: requestData, encoding: NSUTF8StringEncoding)!
         var httpRequestString : String = requestString + (dataToAppend as String)
         let url = NSURL(string: httpRequestString)
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data)
+            self.processHTTPRequest(data, requestType: requestType)
         }
         
         task.resume()
@@ -50,12 +51,12 @@ class Brain {
     * This method sends an HTTP request and runs processHTTPRequest on the response.
     * @param requestString the string to send to the server
     */
-    func sendHTTPRequest(requestString: String) {
+    func sendHTTPRequest(requestString: String, requestType: RequestType) {
         // just send requestString
         let url = NSURL(string: requestString)
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data)
+            self.processHTTPRequest(data, requestType: requestType)
         }
         
         task.resume()
@@ -65,11 +66,25 @@ class Brain {
     * This method deals with responses from the server.
     * @param response the data received from the server
     */
-    func processHTTPRequest(response: NSData) {
-        var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
+    func processHTTPRequest(response: NSData, requestType: RequestType) {
+        // var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
         
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
         var dic : NSArray? = converter.JSONToDic(response);
+        if let constVar = dic {
+            if(requestType == RequestType.NewQuestion) {
+                // TODO
+            }
+            else if(requestType == RequestType.AnswerQuestion) {
+                // TODO
+            }
+            else {
+                // TODO
+            }
+        }
+        else {
+            // dic is "nil", so we just ignore it
+        }
     }
     
     /*
