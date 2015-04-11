@@ -18,6 +18,7 @@
 		BD9FE94A1AD8C113007378E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE9491AD8C113007378E7 /* Images.xcassets */; };
 		BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */; };
 		BD9FE9591AD8C114007378E7 /* dearGodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9581AD8C114007378E7 /* dearGodTests.swift */; };
+		BD9FE96D1AD90247007378E7 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,7 @@
 		BD9FE9521AD8C114007378E7 /* dearGodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dearGodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9FE9571AD8C114007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9581AD8C114007378E7 /* dearGodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dearGodTests.swift; sourceTree = "<group>"; };
-		BD9FE9661AD8CB7B007378E7 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +150,7 @@
 			children = (
 				BD9FE9441AD8C113007378E7 /* AskViewController.swift */,
 				BD9FE9421AD8C113007378E7 /* MainViewController.swift */,
-				BD9FE9661AD8CB7B007378E7 /* AnswerViewController.swift */,
+				BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9FE96D1AD90247007378E7 /* AnswerViewController.swift in Sources */,
 				BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */,
 				283FC9A11AD8CAA30056A7EE /* DatabaseAccessor.swift in Sources */,
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
