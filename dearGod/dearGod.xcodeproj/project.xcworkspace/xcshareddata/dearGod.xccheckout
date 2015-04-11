@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8597DC3D-887D-4825-9BB2-FA05DDEB24D5</string>
 	<key>IDESourceControlProjectName</key>
-	<string>dearGod</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>CF180415800361AB297C0D4381B10EC92529B8CD</key>
 		<string>https://github.com/beallej/dearGod.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>dearGod/dearGod.xcodeproj</string>
+	<string>dearGod/dearGod.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>CF180415800361AB297C0D4381B10EC92529B8CD</key>

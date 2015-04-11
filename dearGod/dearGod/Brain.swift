@@ -23,39 +23,18 @@ class Brain {
     }
     
     /*
-    * This method sends an HTTP request (requestString) and runs processHTTPRequest on the response.
-    * @param the string to send to the server
     */
-    func sendHTTPRequest(requestString: String) {
-        let url = NSURL(string: requestString)
+    func askQuestion(question: String) {
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data)
-        }
-        
-        task.resume()
     }
     
     /*
-    * This method sends an HTTP request (requestData) and runs processHTTPRequest on the response.
-    * @param the string to send to the server
-    */
-    func sendHTTPRequest(requestData: NSData) {
-        var requestString : NSString = NSString(data: requestData, encoding: NSUTF8StringEncoding)!
-        let url = NSURL(string: requestString as String)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data)
-        }
-        
-        task.resume()
-    }
-    
-    /*
-    * This method sends an HTTP request (requestData) and runs processHTTPRequest on the response.
-    * @param the string to send to the server
+    * This method sends an HTTP request and runs processHTTPRequest on the response. The object "requestData" is encoded as UTF-8 and appended to requestString prior to it being sent.
+    * @param requestString the string to send to the server
+    * @param requestData the data to be encoded and sent to the server
     */
     func sendHTTPRequest(requestString: String, requestData: NSData) {
+        // append requestData to requestString
         var dataToAppend : NSString = NSString(data: requestData, encoding: NSUTF8StringEncoding)!
         var httpRequestString : String = requestString + (dataToAppend as String)
         let url = NSURL(string: httpRequestString)
@@ -67,7 +46,20 @@ class Brain {
         task.resume()
     }
     
-    
+    /*
+    * This method sends an HTTP request and runs processHTTPRequest on the response.
+    * @param requestString the string to send to the server
+    */
+    func sendHTTPRequest(requestString: String) {
+        // just send requestString
+        let url = NSURL(string: requestString)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+            self.processHTTPRequest(data)
+        }
+        
+        task.resume()
+    }
     
     /*
     * This method deals with responses from the server.
@@ -77,7 +69,7 @@ class Brain {
         var responseAsAString = NSString(data: response, encoding: NSUTF8StringEncoding)!
         
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-        var dic : NSArray = converter.JSONToDic(response);
+        var dic : NSArray? = converter.JSONToDic(response);
     }
     
     /*
