@@ -81,14 +81,13 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             sharedData.changePoints(10)
             self.holyAnswer.text=sharedData.holyPoints
             self.textViewDidEndEditing(self.answerText)
+            performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
+
         }
         else if sender==self.passB{
-            timer.invalidate()
-            answerText.removeFromSuperview()
-            passB.removeFromSuperview()
-            submitB.removeFromSuperview()
-            timeLabel.removeFromSuperview()
             self.textViewDidEndEditing(self.answerText)
+            performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
+
             
         }
     }
@@ -101,6 +100,8 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(textView: UITextView) {
         textView.text = ""
         textView.textColor = UIColor.blackColor()
+        self.timer.invalidate()
+        self.timeLabel.removeFromSuperview()
         
         
     }
