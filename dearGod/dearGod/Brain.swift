@@ -110,17 +110,26 @@ class Brain {
     */
     func processHTTPRequest(response: NSData, requestType: RequestType) {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-        if(requestType == RequestType.NewQuestion) {
-            var dic : NSDictionary? = converter.JSONToDic(response);
-        }
-        else if(requestType == RequestType.AnswerQuestion) {
-            var err : NSErrorPointer = NSErrorPointer()
-            var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
-        }
-        else if(requestType == RequestType.GetAllQuestions) {
-            var dic : NSDictionary? = converter.JSONToDic(response);
+        if(response.length > 5) {
+            if(requestType == RequestType.NewQuestion) {
+                // var dic : Array = converter.JSONToDic(response);
+                var err : NSErrorPointer = NSErrorPointer()
+                var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
+            }
+            else if(requestType == RequestType.AnswerQuestion) {
+                var err : NSErrorPointer = NSErrorPointer()
+                var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
+            }
+            else if(requestType == RequestType.GetAllQuestions) {
+                // var dic : Array = converter.JSONToDic(response);
+                var err : NSErrorPointer = NSErrorPointer()
+                var dic : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as! NSArray
+            }
+            else {
+            }
         }
         else {
+            // response is probably an empty JSON
         }
     }
     

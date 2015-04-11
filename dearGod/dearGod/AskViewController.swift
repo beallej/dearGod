@@ -24,6 +24,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
             sharedData.changePoints(-10)
             self.holyAsk.text=sharedData.holyPoints
             self.textViewDidEndEditing(self.askField)
+            
         }
         else if sender == self.cancelButton{
             self.textViewDidEndEditing(self.askField)           
