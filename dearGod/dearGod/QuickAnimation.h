@@ -10,4 +10,9 @@
 
 @interface QuickAnimation : UIImageView
 
+@property NSMutableArray *images;
+@property NSTimer *timer;
+
+- (QuickAnimation*) initWithName: (NSString*) filesNames filesExtensions: (NSString*) filesExtensions numberOfFiles: (int) numberOfFiles;
+
 @end
