@@ -50,7 +50,12 @@ class Brain {
         }
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+            if let constVar = data {
+                self.processHTTPRequest(data, requestType: requestType)
+            }
+            else {
+                // data is "nil" - do nothing
+            }
         }
     }
     
@@ -72,7 +77,12 @@ class Brain {
         }
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+            if let constVar = data {
+                self.processHTTPRequest(data, requestType: requestType)
+            }
+            else {
+                // data is "nil" - do nothing
+            }
         }
     }
     
