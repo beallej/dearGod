@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2813091E1AD9570200D6B5BF /* JSONConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2813091D1AD9570200D6B5BF /* JSONConverter.m */; };
 		281309201AD95BF600D6B5BF /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2813091F1AD95BF600D6B5BF /* Brain.swift */; };
+		287F2F7F1AD9766400984CCD /* GoblinPics in Resources */ = {isa = PBXBuildFile; fileRef = 287F2F7E1AD9766400984CCD /* GoblinPics */; };
+		287F2F811AD976AA00984CCD /* QuickAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F2F801AD976AA00984CCD /* QuickAnimation.swift */; };
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
@@ -40,6 +42,8 @@
 		2813091C1AD9570200D6B5BF /* JSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONConverter.h; sourceTree = "<group>"; };
 		2813091D1AD9570200D6B5BF /* JSONConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONConverter.m; sourceTree = "<group>"; };
 		2813091F1AD95BF600D6B5BF /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		287F2F7E1AD9766400984CCD /* GoblinPics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoblinPics; sourceTree = "<group>"; };
+		287F2F801AD976AA00984CCD /* QuickAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAnimation.swift; sourceTree = "<group>"; };
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
 				28F1315A1AD8E1FD001F689D /* userCode.txt */,
+				287F2F7E1AD9766400984CCD /* GoblinPics */,
 				BD9FE96E1AD91202007378E7 /* holyPoints.txt */,
 				BD9FE93E1AD8C113007378E7 /* Supporting Files */,
 			);
@@ -148,6 +153,7 @@
 				2813091B1AD9570100D6B5BF /* dearGod-Bridging-Header.h */,
 				BD9FE98B1AD95D7A007378E7 /* Globals.swift */,
 				28FF94391AD965D3001EBA2B /* RequestType.swift */,
+				287F2F801AD976AA00984CCD /* QuickAnimation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287F2F7F1AD9766400984CCD /* GoblinPics in Resources */,
 				28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */,
 				BD9FE96F1AD91202007378E7 /* holyPoints.txt in Resources */,
 				BD9FE9481AD8C113007378E7 /* Main.storyboard in Resources */,
@@ -277,6 +284,7 @@
 				BD9FE96D1AD90247007378E7 /* AnswerViewController.swift in Sources */,
 				BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */,
 				281309201AD95BF600D6B5BF /* Brain.swift in Sources */,
+				287F2F811AD976AA00984CCD /* QuickAnimation.swift in Sources */,
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
 				BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */,
 				BD9FE98C1AD95D7A007378E7 /* Globals.swift in Sources */,

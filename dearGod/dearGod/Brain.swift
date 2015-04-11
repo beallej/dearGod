@@ -26,13 +26,14 @@ class Brain {
     * This method sends a new question to the server.
     */
     func askQuestion(question: String) {
-        
+        // TODO
     }
     
     /*
     * This method sends an HTTP request and runs processHTTPRequest on the response. The object "requestData" is encoded as UTF-8 and appended to requestString prior to it being sent.
     * @param requestString the string to send to the server
     * @param requestData the data to be encoded and sent to the server
+    * @param requestType the type of request (i.e. creating a new question, answering a question, etc.)
     */
     func sendHTTPRequest(requestString: String, requestData: NSData, requestType: RequestType) {
         // append requestData to requestString
@@ -40,26 +41,49 @@ class Brain {
         var httpRequestString : String = requestString + (dataToAppend as String)
         let url = NSURL(string: httpRequestString)
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data, requestType: requestType)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        if(requestType == RequestType.NewQuestion) {
+            request.HTTPMethod = "POST"
+        }
+        else {
+            request.HTTPMethod = "GET"
         }
         
-        task.resume()
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            if let constVar = data {
+                self.processHTTPRequest(data, requestType: requestType)
+            }
+            else {
+                // data is "nil" - do nothing
+            }
+        }
     }
     
     /*
     * This method sends an HTTP request and runs processHTTPRequest on the response.
     * @param requestString the string to send to the server
+    * @param requestType the type of request (i.e. creating a new question, answering a question, etc.)
     */
     func sendHTTPRequest(requestString: String, requestType: RequestType) {
         // just send requestString
         let url = NSURL(string: requestString)
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.processHTTPRequest(data, requestType: requestType)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        if(requestType == RequestType.NewQuestion) {
+            request.HTTPMethod = "POST"
+        }
+        else {
+            request.HTTPMethod = "GET"
         }
         
-        task.resume()
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            if let constVar = data {
+                self.processHTTPRequest(data, requestType: requestType)
+            }
+            else {
+                // data is "nil" - do nothing
+            }
+        }
     }
     
     /*
