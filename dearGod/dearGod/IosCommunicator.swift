@@ -32,10 +32,10 @@ class IosCommunicator {
         print("[")
         print(contents2)
         println("]")
-        
+        */
         let internetStuff = DatabaseAccessor()
         internetStuff.sendHTTPRequest("pears")
-        */
+        
     }
     
     func intToChar(input: Int) -> Character {
