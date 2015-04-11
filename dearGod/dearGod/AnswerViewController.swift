@@ -20,7 +20,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 1.0, alpha: 1.0)
+        self.view.backgroundColor = sharedData.backgroundColor
         self.holyAnswer.text=getHolyPoints()
         self.answerText.delegate = self
         self.answerText.text = self.placeholder
