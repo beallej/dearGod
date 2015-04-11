@@ -135,9 +135,9 @@ class Brain {
             }
             else {
             }
+
         }
         else {
-            // response is probably an empty JSON
         }
     }
     
