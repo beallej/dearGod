@@ -101,6 +101,14 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         
         
     }
+    func textViewDidChange(textView: UITextView) {
+        if count(textView.text) > 200 {
+            let myNSString = textView.text as NSString
+            let shortString = myNSString.substringWithRange(NSRange(location: 0, length: 200))
+            self.answerText.text = shortString as String
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
