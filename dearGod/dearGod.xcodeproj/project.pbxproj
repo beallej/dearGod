@@ -14,6 +14,7 @@
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
+		BD48AC961AD9750800A158A3 /* DismissAnswerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
 		BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9421AD8C113007378E7 /* MainViewController.swift */; };
 		BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9441AD8C113007378E7 /* AskViewController.swift */; };
@@ -46,6 +47,7 @@
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnswerSegue.swift; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9FE93F1AD8C113007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9401AD8C113007378E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				BD9FE9441AD8C113007378E7 /* AskViewController.swift */,
 				BD9FE9421AD8C113007378E7 /* MainViewController.swift */,
 				BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */,
+				BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD48AC961AD9750800A158A3 /* DismissAnswerSegue.swift in Sources */,
 				BD9FE96D1AD90247007378E7 /* AnswerViewController.swift in Sources */,
 				BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */,
 				281309201AD95BF600D6B5BF /* Brain.swift in Sources */,

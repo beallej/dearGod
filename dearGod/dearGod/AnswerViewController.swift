@@ -14,7 +14,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var holyAnswer: UILabel!
     @IBOutlet weak var answerText: UITextView!
-    @IBOutlet weak var answerLabel: UILabel!
    
     @IBOutlet weak var passB: UIButton!
     @IBOutlet weak var submitB: UIButton!
@@ -24,15 +23,33 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     var counter = 5
     
     func counterUpdate() {
-        if counter != -1{
+        if counter > -1{
             timeLabel.text=String(counter--)
         }
-        else {
-            answerText.removeFromSuperview()
-            passB.removeFromSuperview()
-            submitB.removeFromSuperview()
-            timeLabel.text="Time's Up!"
+        else if counter == -1 {
+            
+            self.delay(0.5){
+                self.view.backgroundColor = UIColor.blackColor()
+                self.timeLabel.textColor = sharedData.backgroundColor
+                self.timeLabel.text="Time's Up!"
+            }
+            counter--
         }
+        else{
+            self.view.backgroundColor=sharedData.backgroundColor
+            self.timeLabel.textColor=UIColor.blackColor()
+            performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
+        }
+    }
+    
+    //http://stackoverflow.com/questions/24034544/dispatch-after-gcd-in-swift
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
     override func viewDidLoad() {
