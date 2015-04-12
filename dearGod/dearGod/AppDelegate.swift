@@ -13,11 +13,14 @@ import NotificationCenter
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var thomasTestVar: Brain?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        thomasTestVar = Brain()
+        
+        // UITextView        
+        // NSMutableAttributedString* text = [textView textStorage];
+        // [text applyFontTraits:NSBoldFontMask range:NSMakeRange(0,[text length])];
+        
         return true
     }
 
