@@ -71,8 +71,6 @@ class Brain {
                 self.processHTTPRequest(data, requestType: requestType)
             }
             else {
-                var q = 52;
-                q = 3;
                 // data is "nil" - do nothing
             }
         }
@@ -143,16 +141,16 @@ class Brain {
             else {
                 if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
                     if(requestType == RequestType.NewQuestion) {
-                        // TODO
+                        // TODO - WE DON'T NEED THIS
                     }
                     else if(requestType == RequestType.AnswerQuestion) {
-                        // TODO
+                        // TODO - WE DON'T NEED THIS
                     }
                     else if(requestType == RequestType.GetAllQuestions) {
                         NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
                     }
                     else if(requestType == RequestType.GetQuestion) {
-                        // TODO
+                        // TODO - WE DON'T NEED THIS
                     }
                     else if(requestType == RequestType.GetQuestionToAnswer) {
                         // todo
@@ -165,9 +163,6 @@ class Brain {
             }
         }
         else {
-            
-            var q = 2;
-            q = 4;
         }
     }
     
