@@ -37,7 +37,8 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             counter--
         }
         else{
-            self.view.backgroundColor=sharedData.backgroundColor
+            //self.view.backgroundColor=sharedData.backgroundColor
+            self.view.backgroundColor=UIColor.whiteColor()
             self.timeLabel.textColor=UIColor.blackColor()
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
         }
@@ -55,7 +56,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = sharedData.backgroundColor
+        //self.view.backgroundColor = sharedData.backgroundColor
         timeLabel.text = String(counter)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
         self.answerText.delegate = self
@@ -63,6 +64,11 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.answerText.textColor = UIColor.grayColor()
         self.answerText.clipsToBounds = true
         self.answerText.layer.cornerRadius = 10.0
+        self.answerText.layer.borderWidth = 1.0
+        self.answerText.layer.borderColor = sharedData.borderColor
+        self.answerText.contentInset = UIEdgeInsetsMake(4,8,0,0)
+        self.submitB.layer.cornerRadius = 10.0
+        self.passB.layer.cornerRadius = 10.0
         
         // Do any additional setup after loading the view, typically from a nib.
     }

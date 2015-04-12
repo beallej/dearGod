@@ -69,13 +69,22 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = sharedData.backgroundColor
+        //self.view.backgroundColor = sharedData.backgroundColor
         self.holyAsk.text = sharedData.holyPoints
         self.askField.clipsToBounds = true
         self.askField.layer.cornerRadius = 10.0
         self.askField.delegate = self
         self.askField.text = self.placeholder
         self.askField.textColor = UIColor.grayColor()
+        self.askField.layer.cornerRadius = 10.0
+        self.askField.layer.borderWidth = 1.0
+        self.askField.layer.borderColor = sharedData.borderColor
+        self.askField.contentInset = UIEdgeInsetsMake(4,8,0,0);
+        self.submitButton.layer.cornerRadius = 10.0
+        self.cancelButton.layer.cornerRadius = 10.0
+        
+
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
