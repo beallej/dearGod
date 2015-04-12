@@ -14,6 +14,7 @@ class Brain {
     var urlHeroku = "http://deargod.herokuapp.com"
     var urlNgrok = "http://deargod.ngrok.com/api/questions"
     var urlNgrokid = "http://deargod.ngrok.com/api/users/"
+    var urlNgrokgetQ = "http://deargod.ngrok.com/api/questions/answer/"
     
     
     
@@ -59,7 +60,7 @@ class Brain {
     func getQuestionToAnswer() {
         
         if(myID != "") {
-            getRequest(urlNgrok+myID, requestType: RequestType.GetQuestionToAnswer)
+            getRequest(urlNgrokgetQ+myID, requestType: RequestType.GetQuestionToAnswer)
             print("has Id")
         }
     }
@@ -160,6 +161,8 @@ class Brain {
                         // TODO - WE DON'T NEED THIS
                     }
                     else if(requestType == RequestType.GetAllQuestions) {
+                        self.saveQuestions(question)
+                        
                         NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
                     }
                     else if(requestType == RequestType.GetQuestion) {

@@ -21,7 +21,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     let questionID = "69"
     
     var timer = NSTimer()
-    var counter = 5
+    var counter = 69
     
     // 0 = no; 1 = waiting for server; 2 = yes
     var hasQuestionToAnswer = 0
