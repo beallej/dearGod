@@ -10,41 +10,52 @@ import Foundation
 
 class Brain {
     let converter : JSONConverter
-    var myID = "fillerID"
+    var myID = ""
     
     init()  {
         converter = JSONConverter()
+        myID = openFile("myID", fileExtension: "txt")!
+        if(myID == "") {
+            askForID()
+        }
     }
     
     func askQuestion(question: String) {
-        var dic : [String:String]
-        dic = ["question": question]
-        postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
+        if(myID != "") {
+            var dic : [String:String]
+            dic = ["question": question]
+            postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
+        }
     }
     
     func getAllQuestions() {
-        getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.GetAllQuestions)
+        if(myID != "") {
+            getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.GetAllQuestions)
+        }
     }
     
     func answerQuestion(questionID: String, answer: String) {
-        var dic : [String:String]
-        dic = ["answer": answer]
-        postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+        if(myID != "") {
+            var dic : [String:String]
+            dic = ["answer": answer]
+            postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+        }
     }
     
     func getQuestion(questionID: String) {
-        getRequest("http://deargod.herokuapp.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
+        if(myID != "") {
+            getRequest("http://deargod.herokuapp.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
+        }
     }
     
     func getQuestionToAnswer() {
-        getRequest("http://deargod.herokuapp.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
+        if(myID != "") {
+            getRequest("http://deargod.herokuapp.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
+        }
     }
     
-    
-    func getID() {
-        var dic : [String:String]
-        dic = ["ip": ""]
-        postRequest("http://deargod.herokuapp.com/api/users", requestDic: dic, requestType: RequestType.NewQuestion)
+    func askForID() {
+        getRequest("http://deargod.herokuapp.com/api/users/", requestType: RequestType.GetID)
     }
     
     func getRequest(requestString: String, requestType: RequestType) {
@@ -60,6 +71,8 @@ class Brain {
                 self.processHTTPRequest(data, requestType: requestType)
             }
             else {
+                var q = 52;
+                q = 3;
                 // data is "nil" - do nothing
             }
         }
@@ -82,7 +95,6 @@ class Brain {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             if let constVar = data {
                 self.processHTTPRequest(data, requestType: requestType)
-                
             }
             else {
                 // data is "nil" - do nothing
@@ -122,27 +134,40 @@ class Brain {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
         if(response.length > 5) {
             var err : NSErrorPointer = NSErrorPointer()
-            if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
-                if(requestType == RequestType.NewQuestion) {
-                    // TODO
+            if(requestType == RequestType.GetID) {
+                if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary{
+                    myID = question.objectForKey("id") as! String
+                    saveFile("myID", fileExtension: "txt", myID)
                 }
-                else if(requestType == RequestType.AnswerQuestion) {
-                    // TODO
+            }
+            else {
+                if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    if(requestType == RequestType.NewQuestion) {
+                        // TODO
+                    }
+                    else if(requestType == RequestType.AnswerQuestion) {
+                        // TODO
+                    }
+                    else if(requestType == RequestType.GetAllQuestions) {
+                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
+                    }
+                    else if(requestType == RequestType.GetQuestion) {
+                        // TODO
+                    }
+                    else if(requestType == RequestType.GetQuestionToAnswer) {
+                        // todo
+                        sharedData.questionToAnswer = "insert question to answer here"
+                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
+                    }
                 }
-                else if(requestType == RequestType.GetAllQuestions) {
-                    NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
-                }
-                else if(requestType == RequestType.GetQuestion) {
-                    // TODO
-                }
-                else if(requestType == RequestType.GetQuestionToAnswer) {
-                    // todo
-                    sharedData.questionToAnswer = "insert question to answere here"
-                    NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
+                else {
                 }
             }
         }
         else {
+            
+            var q = 2;
+            q = 4;
         }
     }
     
