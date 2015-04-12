@@ -42,9 +42,14 @@ class MainViewController: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: Selector(self.refresh()), forControlEvents:.ValueChanged)
+        var question = "Man"
+        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
+        displayQA(question, answer:answer)
+        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
+        var answer2 = "Yo mama"
+        displayQA(question2, answer:answer2)
         
-        
-        //self.scrollView.addSubview(refreshControl)
+        self.scrollView.addSubview(refreshControl)
        
         
         
@@ -64,7 +69,9 @@ class MainViewController: UIViewController {
     }
     
     func refresh(){
+        self.refreshControl.endRefreshing()
         sharedData.brain.getAllQuestions()
+        
         
     }
     
@@ -74,17 +81,12 @@ class MainViewController: UIViewController {
   
     
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        //        var question = "Man"
-        //        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
-        //        displayQA(question, answer:answer)
-        //        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
-        //        var answer2 = "Yo mama"
-        //        displayQA(question2, answer:answer2)
+        
         
         for question in sharedData.questions{
-            if let ans = question["q"] as? String{
-              
-                if let quest = question["q"] as? String{
+            if let quest = question["q"] as? String{
+              print(quest)
+                if let ans = question["a"] as? String{
                     displayQA(quest, answer:ans)
 
                 }
