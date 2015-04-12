@@ -143,6 +143,7 @@ class Brain {
                     if(requestType == RequestType.GetID) {
                         myID = question.objectForKey("id") as! String
                         saveFile("myID", fileExtension: "txt", myID)
+                        getAllQuestions()
                     }
                     else if(requestType == RequestType.GetQuestionToAnswer) {
                         // todo
