@@ -78,7 +78,6 @@ class MainViewController: UIViewController {
             print ("\n")
             
         }
-
     }
     
     var space = 70

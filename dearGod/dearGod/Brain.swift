@@ -23,7 +23,7 @@ class Brain {
     func askQuestion(question: String) {
         if(myID != "") {
             var dic : [String:String]
-            dic = ["question": question]
+            dic = ["question": question, "userId": myID]
             postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
         }
     }
@@ -35,6 +35,7 @@ class Brain {
     }
     
     func answerQuestion(questionID: String, answer: String) {
+        
         if(myID != "") {
             var dic : [String:String]
             dic = ["answer": answer]
@@ -49,6 +50,7 @@ class Brain {
     }
     
     func getQuestionToAnswer() {
+        
         if(myID != "") {
             getRequest("http://deargod.herokuapp.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
         }
@@ -133,13 +135,15 @@ class Brain {
         if(response.length > 5) {
             var err : NSErrorPointer = NSErrorPointer()
             if(requestType == RequestType.GetID) {
-                if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary{
+                if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary {
+                    
                     myID = question.objectForKey("id") as! String
                     saveFile("myID", fileExtension: "txt", myID)
                 }
             }
             else {
                 if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    
                     if(requestType == RequestType.NewQuestion) {
                         // TODO - WE DON'T NEED THIS
                     }
@@ -155,6 +159,7 @@ class Brain {
                     else if(requestType == RequestType.GetQuestionToAnswer) {
                         // todo
                         sharedData.questionToAnswer = "insert question to answer here"
+                        sharedData.questionToAnswerID = "insert question id here"
                         NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
                     }
                 }

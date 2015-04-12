@@ -16,6 +16,7 @@ class Singleton {
     var holyPoints: String
     var questions: NSMutableArray = NSMutableArray()
     var questionToAnswer: String = ""
+    var questionToAnswerID: String = ""
     
     var borderColor: CGColor = UIColor.grayColor().CGColor
     

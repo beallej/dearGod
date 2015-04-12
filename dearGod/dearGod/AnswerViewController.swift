@@ -89,6 +89,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         if(self.hasQuestionToAnswer == 0) {
             // ask brain for question to answer
             self.hasQuestionToAnswer = 1
+            
             sharedData.brain.getQuestionToAnswer()
         }
     }
@@ -99,7 +100,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             sharedData.changePoints(10)
             self.holyAnswer.text=sharedData.holyPoints
             let answer = self.answerText.text
-            //sharedData.brain.answerQuestion(questionID, answer: answer)
+            sharedData.brain.answerQuestion(sharedData.questionToAnswerID, answer: answer)
             self.textViewDidEndEditing(self.answerText)
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 
