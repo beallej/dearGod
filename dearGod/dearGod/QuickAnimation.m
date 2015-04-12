@@ -13,10 +13,10 @@
 int imageIndex;
 
 - (QuickAnimation*) initWithName: (NSString*) filesNames filesExtensions: (NSString*) filesExtensions numberOfFiles: (int) numberOfFiles {
-    self.images = [[NSMutableArray alloc] init];
+    self.imageList = [[NSMutableArray alloc] init];
     for(int i=0; i<numberOfFiles; i++) {
-        NSString *fileName = [NSString stringWithFormat:@"%@%i%@",filesNames, i, filesExtensions];
-        [self.images addObject:fileName];
+        NSString *fileName = [NSString stringWithFormat:@"%@%i.%@",filesNames, i, filesExtensions];
+        [self.imageList addObject:fileName];
     }
     imageIndex = -1;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(changeDisplayedImage) userInfo:nil repeats:YES];
@@ -25,8 +25,8 @@ int imageIndex;
 
 - (void) changeDisplayedImage {
     imageIndex++;
-    if(imageIndex < self.images.count) {
-        self.image = self.images[imageIndex];
+    if(imageIndex < self.imageList.count) {
+        self.image = self.imageList[imageIndex];
     }
 }
 

@@ -20,6 +20,9 @@ class MainViewController: UIViewController {
       
         self.scrollView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
+
+                
         scrollView.userInteractionEnabled = true
         scrollView.scrollEnabled = true
         scrollView.contentSize = CGSizeMake(500, 1000)
@@ -50,6 +53,10 @@ class MainViewController: UIViewController {
     
     func refresh(){
         print("meow")
+    }
+    
+    func checkWithBrainForTableContentsMethod(notification: NSNotification) {
+        NSLog("Fire!");
     }
 
 
