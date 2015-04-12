@@ -3,7 +3,8 @@
 // packages
 var express    = require("express"),
     app        = express(),
-    bodyParser = require("body-parser");
+    bodyParser = require("body-parser"),
+    fs         = require('fs');
 
 
 // mongo setup
@@ -18,6 +19,11 @@ mongoose.connect("mongodb://lbiester:HackISU2015@ds061741.mongolab.com:61741/dea
 
 var Question = require("./models/question");
 var User     = require("./models/user");
+
+// silly views for God's Words
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 
 // use bodyParser
@@ -143,11 +149,6 @@ router.route("/questions/answer/:id")
                 chosenQuestion.rejectCount += 1;
                 chosenQuestion.save();
 
-                // setTimeout(function() {
-                //     chosenQuestion.rejectCount += 1;
-                //     chosenQuestion.currentlyAnswering = null;
-                //     chosenQuestion.save();
-                // }, 60000);
                 res.json(chosenQuestion);
             }
         });
@@ -181,6 +182,39 @@ router.route("/users/:id")
             }
         });
     })
+
+router.route("/God")
+
+    // get the true words of God
+    .get(function(req, res) {
+        fs.readFile("bible.txt", "utf-8", function(err, data) {
+            if (err) {
+                res.send(err);
+            } else {
+                var lines = data.split(/\r?\n/);
+                var TheChosenLine = getGodLine(lines);
+                res.send({ "words" : TheChosenLine });
+            }
+        });
+    });
+
+app.get("/", function(req, res) {
+    fs.readFile("bible.txt", "utf-8", function(err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            var lines = data.split(/\r?\n/);
+            var TheChosenLine = getGodLine(lines);
+            res.render("index", { "words" : TheChosenLine });
+        }
+    });
+})
+
+var getGodLine = function(lines) {
+    var rand = Math.floor(Math.random() * lines.length);
+    var TheChosenLine = lines[rand];
+    return TheChosenLine.replace("\t", "    ");
+}
 
 app.use("/api", router);
 

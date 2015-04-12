@@ -1,0 +1,43 @@
+body {
+    background-color: #A5D8FA;
+}
+
+img#title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    max-width: 90%;
+}
+
+.mockup {
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+#mockup img {
+    height: 100%;
+    margin-top: 10px;
+}
+
+.mockup-div {
+    align: center;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+margin: auto;
+}
+
+div.content {
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+    width: 100%;
+}
+
+div.content div {
+    margin: 10px 0px;
+}
+
+span#god-words {
+    font-size: 18px;
+}
