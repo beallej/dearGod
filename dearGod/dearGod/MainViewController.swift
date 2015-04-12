@@ -10,25 +10,31 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var holyView: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //sharedData.brain.getAllQuestions()
-        self.view.backgroundColor = sharedData.backgroundColor
-        self.tableView.backgroundColor = sharedData.backgroundColor
-        self.tableView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
+      
+        self.scrollView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
         
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
+
+                
+        scrollView.userInteractionEnabled = true
+        scrollView.scrollEnabled = true
+        scrollView.contentSize = CGSizeMake(500, 1000)
+        scrollView.directionalLockEnabled = true
+       
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
+        self.scrollView.addSubview(refreshControl)
         sharedData.brain.getAllQuestions()
         for question in sharedData.questions{
+            print(question[1]["q"])
             
         }
         
@@ -47,6 +53,10 @@ class MainViewController: UIViewController {
     
     func refresh(){
         print("meow")
+    }
+    
+    func checkWithBrainForTableContentsMethod(notification: NSNotification) {
+        NSLog("Fire!");
     }
 
 

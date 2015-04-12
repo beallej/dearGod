@@ -15,6 +15,7 @@ class Singleton {
     var brain: Brain = Brain()
     var holyPoints: String
     var questions: NSMutableArray = NSMutableArray()
+    var borderColor: CGColor = UIColor.grayColor().CGColor
     
     init() {
         holyPoints = brain.openFile("holyPoints", fileExtension: "txt")!
