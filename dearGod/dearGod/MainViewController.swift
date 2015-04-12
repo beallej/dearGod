@@ -13,37 +13,39 @@ class MainViewController: UIViewController {
 
     var refreshControl:UIRefreshControl!
     
+    @IBOutlet var navBar: [UINavigationBar]!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var holyView: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var question = "Man"
-        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
-        displayQA(question, answer:answer)
-        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
-        var answer2 = "Yo mama"
-        displayQA(question2, answer:answer2)
+//        var question = "Man"
+//        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
+//        displayQA(question, answer:answer)
+//        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
+//        var answer2 = "Yo mama"
+//        displayQA(question2, answer:answer2)
 
       
-        self.scrollView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
+        self.scrollView.contentInset = UIEdgeInsetsMake(-20.0, 0.0, 0.0, 0.0)
         
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
 
         
-        scrollView.userInteractionEnabled = true
-        scrollView.scrollEnabled = true
-        scrollView.contentSize = CGSizeMake(500, 1000)
-        scrollView.directionalLockEnabled = true
+        self.scrollView.userInteractionEnabled = true
+        self.scrollView.scrollEnabled = true
+        self.scrollView.contentSize = CGSizeMake(500, 1000)
+        self.scrollView.directionalLockEnabled = true
         sharedData.brain.getAllQuestions()
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: Selector(self.refresh()), forControlEvents:.ValueChanged)
         
         
-        self.scrollView.addSubview(refreshControl)
+        //self.scrollView.addSubview(refreshControl)
+       
         
         
         
@@ -72,11 +74,21 @@ class MainViewController: UIViewController {
   
     
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        print ("dfd")
+        //        var question = "Man"
+        //        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
+        //        displayQA(question, answer:answer)
+        //        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
+        //        var answer2 = "Yo mama"
+        //        displayQA(question2, answer:answer2)
+        
         for question in sharedData.questions{
-            print(question)
-            print ("\n")
-            
+            if let ans = question["q"] as? String{
+              
+                if let quest = question["q"] as? String{
+                    displayQA(quest, answer:ans)
+
+                }
+            }
         }
     }
     
@@ -95,19 +107,38 @@ class MainViewController: UIViewController {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         var screenWidth = Int(screenSize.width)
         var questView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengthq))
-        questView.font = UIFont (name: "Avenir-Black", size: 18)
-        self.view.addSubview(questView)
+        //var boldFont: UIFont = UIFont.preferredFontForTextStyle("bold"))
+        questView.scrollsToTop=false
+        questView.font = UIFont(name: "Avenir-Black", size: 18)
+        questView.layer.cornerRadius = 10.0
+        questView.layer.borderWidth = 1.0
+        questView.layer.borderColor = sharedData.borderColor
+        questView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
+
+        self.scrollView.addSubview(questView)
+
         questView.text=q
         questView.editable = false
         space += Int(lengthq + 5)
         var ansView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengtha))
         ansView.font = UIFont (name: "Avenir Book", size: 18)
-        self.view.addSubview(ansView)
+        self.scrollView.addSubview(ansView)
         ansView.text=a
         ansView.editable = false
+        ansView.scrollsToTop=false
+
+        ansView.layer.cornerRadius = 10.0
+        ansView.layer.borderWidth = 1.0
+        ansView.layer.borderColor = sharedData.borderColor
+        ansView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
+
         space += Int(lengtha + 10)
         lengthq = 30
         lengtha = 30
+        
+        
+        
+       
     }
 
 

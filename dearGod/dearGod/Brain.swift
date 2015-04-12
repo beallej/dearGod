@@ -30,7 +30,7 @@ class Brain {
     
     func getAllQuestions() {
         if(myID != "") {
-            getRequest("http://deargod.herokuapp.com/api/questions", requestType: RequestType.GetAllQuestions)
+            getRequest("http://deargod.ngrok.com/api/questions", requestType: RequestType.GetAllQuestions)
         }
     }
     
@@ -39,25 +39,25 @@ class Brain {
         if(myID != "") {
             var dic : [String:String]
             dic = ["answer": answer]
-            postRequest("http://deargod.herokuapp.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+            postRequest("http://deargod.ngrok.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
         }
     }
     
     func getQuestion(questionID: String) {
         if(myID != "") {
-            getRequest("http://deargod.herokuapp.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
+            getRequest("http://deargod.ngrok.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
         }
     }
     
     func getQuestionToAnswer() {
         
         if(myID != "") {
-            getRequest("http://deargod.herokuapp.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
+            getRequest("http://deargod.ngrok.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
         }
     }
     
     func askForID() {
-        getRequest("http://deargod.herokuapp.com/api/users/", requestType: RequestType.GetID)
+        getRequest("http://deargod.ngrok.com/api/users/", requestType: RequestType.GetID)
     }
     
     func getRequest(requestString: String, requestType: RequestType) {

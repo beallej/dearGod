@@ -6,7 +6,8 @@ var QuestionSchema = new Schema({
     a: String,
     rejectCount: Number,
     currentlyAnswering: String,
-    askerId: String
+    askerId: String,
+    dateAnswered: Date
 });
 
 module.exports = mongoose.model("Question", QuestionSchema);
