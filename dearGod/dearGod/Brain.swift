@@ -9,7 +9,8 @@
 import Foundation
 
 class Brain {
-    let converter : JSONConverter;
+    let converter : JSONConverter
+    var myID = "fillerID"
     
     init()  {
         converter = JSONConverter()
@@ -35,10 +36,14 @@ class Brain {
         getRequest("http://deargod.herokuapp.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
     }
     
+    func getQuestionToAnswer() {
+        getRequest("http://deargod.herokuapp.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
+    }
+    
     
     func getID() {
         var dic : [String:String]
-        dic = ["ip": getIP()]
+        dic = ["ip": ""]
         postRequest("http://deargod.herokuapp.com/api/users", requestDic: dic, requestType: RequestType.NewQuestion)
     }
     
@@ -115,7 +120,6 @@ class Brain {
     */
     func processHTTPRequest(response: NSData, requestType: RequestType) {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
-
         if(response.length > 5) {
             var err : NSErrorPointer = NSErrorPointer()
             if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
@@ -131,6 +135,11 @@ class Brain {
                 else if(requestType == RequestType.GetQuestion) {
                     // TODO
                 }
+                else if(requestType == RequestType.GetQuestionToAnswer) {
+                    // todo
+                    sharedData.questionToAnswer = "insert question to answere here"
+                    NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
+                }
             }
         }
         else {
@@ -144,27 +153,6 @@ class Brain {
             }
         }
         
-    }
-    
-    /*
-    * Finds the device's IP address
-    * @return the IP address as a string
-    */
-    func getIP() -> String {
-        let host = CFHostCreateWithName(nil,"www.google.com").takeRetainedValue();
-        CFHostStartInfoResolution(host, .Addresses, nil);
-        var success: Boolean = 0;
-        let addresses = CFHostGetAddressing(host, &success).takeUnretainedValue() as NSArray;
-        if (addresses.count > 0) {
-            let theAddress = addresses[0] as! NSData;
-            var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
-            if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length), &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                if let numAddress = String.fromCString(hostname) {
-                    return numAddress
-                }
-            }
-        }
-        return ""
     }
     
     /*
