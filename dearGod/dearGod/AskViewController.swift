@@ -19,12 +19,16 @@ class AskViewController: UIViewController, UITextViewDelegate {
     let placeholder = "Ask His/Her Holiness Here..."
     @IBAction func buttonAction(sender: UIButton) {
         if sender == self.submitButton{
-            // Submit Question to Oracle
             sharedData.changePoints(-10)
-            self.holyAsk.text=sharedData.holyPoints
+            //self.holyAsk.text=sharedData.holyPoints
             let question = self.askField.text
             self.textViewDidEndEditing(self.askField)
-            sharedData.brain.askQuestion(question)
+            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+            if question.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
+                sharedData.brain.askQuestion(question)
+            }
+            
+            
 
         }
         else if sender == self.cancelButton{
@@ -36,7 +40,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.holyAsk.text=sharedData.holyPoints
+        //self.holyAsk.text=sharedData.holyPoints
         
     }
     
@@ -52,6 +56,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
         
     
     }
+    
 
     
     func textViewDidChange(textView: UITextView) {
@@ -63,8 +68,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = sharedData.backgroundColor
-        self.holyAsk.text = sharedData.holyPoints
+        //self.holyAsk.text = sharedData.holyPoints
         self.askField.clipsToBounds = true
         self.askField.layer.cornerRadius = 10.0
         self.askField.delegate = self

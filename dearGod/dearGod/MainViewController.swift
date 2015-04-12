@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sharedData.brain.getAllQuestions()
-        self.holyView.text=sharedData.holyPoints
+        //self.holyView.text=sharedData.holyPoints
         
     }
 
@@ -86,7 +86,6 @@ class MainViewController: UIViewController {
         
         for question in sharedData.questions{
             if let quest = question["q"] as? String{
-                print(quest)
                 if !(contains(qList, quest)){
                     if let ans = question["a"] as? String{
                         displayQA(quest, answer:ans)
@@ -119,6 +118,7 @@ class MainViewController: UIViewController {
         questView.layer.cornerRadius = 10.0
         questView.layer.borderWidth = 1.0
         questView.layer.borderColor = sharedData.borderColor
+        questView.userInteractionEnabled = false
         questView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
 
         self.scrollView.addSubview(questView)
@@ -132,6 +132,7 @@ class MainViewController: UIViewController {
         ansView.text=a
         ansView.editable = false
         ansView.scrollsToTop=false
+        ansView.userInteractionEnabled = false
 
         ansView.layer.cornerRadius = 10.0
         ansView.layer.borderWidth = 1.0
