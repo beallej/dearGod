@@ -11,33 +11,40 @@ import CoreGraphics
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var holyView: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         var question = "Man"
         var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
         displayQA(question, answer:answer)
         var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
         var answer2 = "Yo mama"
         displayQA(question2, answer:answer2)
+=======
+      
+        self.scrollView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
+        
+>>>>>>> f22e362f6b2282240ad3c99b48f6bdcad8894c2f
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
-        
-        //sharedData.brain.getAllQuestions()
-        self.view.backgroundColor = sharedData.backgroundColor
-        self.tableView.backgroundColor = sharedData.backgroundColor
-        self.tableView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
-        
-        
+
+                
+        scrollView.userInteractionEnabled = true
+        scrollView.scrollEnabled = true
+        scrollView.contentSize = CGSizeMake(500, 1000)
+        scrollView.directionalLockEnabled = true
+       
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
+        self.scrollView.addSubview(refreshControl)
         sharedData.brain.getAllQuestions()
         for question in sharedData.questions{
+            print(question[1]["q"])
             
         }
         

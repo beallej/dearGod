@@ -12,7 +12,6 @@
 		28289B781AD97D3500AB8D6F /* QuickAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28289B771AD97D3500AB8D6F /* QuickAnimation.m */; };
 		287F2F7F1AD9766400984CCD /* GoblinPics in Resources */ = {isa = PBXBuildFile; fileRef = 287F2F7E1AD9766400984CCD /* GoblinPics */; };
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
-		28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28F1315A1AD8E1FD001F689D /* userCode.txt */; };
 		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
 		BD48AC961AD9750800A158A3 /* DismissAnswerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
@@ -46,7 +45,6 @@
 		28289B771AD97D3500AB8D6F /* QuickAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickAnimation.m; sourceTree = "<group>"; };
 		287F2F7E1AD9766400984CCD /* GoblinPics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoblinPics; sourceTree = "<group>"; };
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		28F1315A1AD8E1FD001F689D /* userCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userCode.txt; sourceTree = "<group>"; };
 		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnswerSegue.swift; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +112,6 @@
 				28289B771AD97D3500AB8D6F /* QuickAnimation.m */,
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
-				28F1315A1AD8E1FD001F689D /* userCode.txt */,
 				287F2F7E1AD9766400984CCD /* GoblinPics */,
 				BD9FE96E1AD91202007378E7 /* holyPoints.txt */,
 				BD9FE93E1AD8C113007378E7 /* Supporting Files */,
@@ -260,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				287F2F7F1AD9766400984CCD /* GoblinPics in Resources */,
-				28F1315B1AD8E1FD001F689D /* userCode.txt in Resources */,
 				BD9FE96F1AD91202007378E7 /* holyPoints.txt in Resources */,
 				BD9FE9481AD8C113007378E7 /* Main.storyboard in Resources */,
 				BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */,
