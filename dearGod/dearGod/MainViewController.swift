@@ -144,7 +144,7 @@ class MainViewController: UIViewController {
         lengtha = 30
         
         
-        
+        self.scrollView.contentSize = CGSizeMake(CGFloat(screenWidth), CGFloat(space))
        
     }
 
