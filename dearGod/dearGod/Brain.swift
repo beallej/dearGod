@@ -172,8 +172,8 @@ class Brain {
                     }
                     else if(requestType == RequestType.GetQuestionToAnswer) {
                         // todo
-                        sharedData.questionToAnswer = "insert question to answer here"
-                        sharedData.questionToAnswerID = "insert question id here"
+                        sharedData.questionToAnswer = question[0]["q"] as! String
+                        print("iwokeuplikedis")
                         NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
                     }
                 }
