@@ -18,18 +18,18 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
+
         var question = "Man"
         var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
         displayQA(question, answer:answer)
         var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
         var answer2 = "Yo mama"
         displayQA(question2, answer:answer2)
-=======
+
       
         self.scrollView.contentInset = UIEdgeInsetsMake(60.0, -15.0, 0.0, 0.0)
         
->>>>>>> f22e362f6b2282240ad3c99b48f6bdcad8894c2f
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
 
                 
