@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet var navBar: [UINavigationBar]!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var holyView: UILabel!
+    var qList: [String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class MainViewController: UIViewController {
 //        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
 //        var answer2 = "Yo mama"
 //        displayQA(question2, answer:answer2)
-
-      
+        qList=[String]()
+        
         self.scrollView.contentInset = UIEdgeInsetsMake(-20.0, 0.0, 0.0, 0.0)
         
 
@@ -38,11 +39,16 @@ class MainViewController: UIViewController {
         self.scrollView.scrollEnabled = true
         self.scrollView.contentSize = CGSizeMake(500, 1000)
         self.scrollView.directionalLockEnabled = true
-        sharedData.brain.getAllQuestions()
+        
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: Selector(self.refresh()), forControlEvents:.ValueChanged)
-        
+        var question = "Man"
+        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
+        //displayQA(question, answer:answer)
+        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
+        var answer2 = "Yo mama"
+        //displayQA(question2, answer:answer2)
         
         //self.scrollView.addSubview(refreshControl)
        
@@ -54,6 +60,7 @@ class MainViewController: UIViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        sharedData.brain.getAllQuestions()
         self.holyView.text=sharedData.holyPoints
         
     }
@@ -64,7 +71,9 @@ class MainViewController: UIViewController {
     }
     
     func refresh(){
+        self.refreshControl.endRefreshing()
         sharedData.brain.getAllQuestions()
+        
         
     }
     
@@ -74,18 +83,15 @@ class MainViewController: UIViewController {
   
     
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        //        var question = "Man"
-        //        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
-        //        displayQA(question, answer:answer)
-        //        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
-        //        var answer2 = "Yo mama"
-        //        displayQA(question2, answer:answer2)
         
         for question in sharedData.questions{
-            if let ans = question["q"] as? String{
-              
-                if let quest = question["q"] as? String{
-                    displayQA(quest, answer:ans)
+            if let quest = question["q"] as? String{
+                print(quest)
+                if !(contains(qList, quest)){
+                    if let ans = question["a"] as? String{
+                        displayQA(quest, answer:ans)
+                    qList.append(quest)
+                    }
 
                 }
             }
