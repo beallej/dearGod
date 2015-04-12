@@ -10,10 +10,10 @@ var express    = require("express"),
 var mongoose   = require("mongoose");
 
 // prod db
-// mongoose.connect("mongodb://lbiester:HackISU2015@ds061741.mongolab.com:61741/deargod");
+mongoose.connect("mongodb://lbiester:HackISU2015@ds061741.mongolab.com:61741/deargod");
 
 // local db
-mongoose.connect("mongodb://localhost:27017/deargod");
+// mongoose.connect("mongodb://localhost:27017/deargod");
 
 
 var Question = require("./models/question");
@@ -48,6 +48,7 @@ router.route("/questions")
         var question = new Question();
         question.q = req.body.question;
         question.rejectCount = 0;
+        question.askerId = req.body.userId;
 
         // save qustion
         question.save(function(err, question) {
@@ -55,9 +56,10 @@ router.route("/questions")
         })
     })
 
-    // get questions
+    // get last 50 answered questions
     .get(function(req, res) {
-        Question.find(function(err, questions) {
+        Question.find({ $query : { a: {$ne: null}}, $orderby: { dateAnswered : -1 }},
+            {}, { limit: 50 }, function(err, questions) {
             if (err) {
                 res.send(err);
             } else {
@@ -65,6 +67,22 @@ router.route("/questions")
             }
         })
     })
+
+
+// send back the 10 most recent questions I have asked
+router.route("/questions/my/:user_id")
+
+    .get(function(req, res){
+        // most recent 10 questions that have been answered that I asked...yeesh
+        Question.find({ $query : { askerId: req.params.user_id, a: {$ne: null}},
+            $orderby: { dateAnswered : -1 }}, {}, { limit: 10 }, function(err, questions) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(questions);
+            }
+        });
+    });
 
 router.route("/questions/:question_id")
 
@@ -84,6 +102,7 @@ router.route("/questions/:question_id")
         Question.findById(req.params.question_id, function(err, question) {
             var answer = req.body.answer;
             question.a = answer;
+            question.dateAnswered = new Date();
 
             // save question
             question.save(function(err) {
@@ -126,7 +145,7 @@ router.route("/questions/answer/:id")
 
 router.route("/users/")
 
-    // add new user with UUID :UUID and ip :ip
+    // add new user
     .get(function(req, res) {
         var user = new User();
 
