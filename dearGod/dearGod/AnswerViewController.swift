@@ -18,10 +18,10 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var passB: UIButton!
     @IBOutlet weak var submitB: UIButton!
     let placeholder = "Enter your answer here..."
-    let questionID = "69"
+    let questionID = "60"
     
     var timer = NSTimer()
-    var counter = 69
+    var counter = 60
     
     // 0 = no; 1 = waiting for server; 2 = yes
     var hasQuestionToAnswer = 0
