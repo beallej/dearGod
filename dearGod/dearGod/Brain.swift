@@ -173,10 +173,12 @@ class Brain {
     
     func saveQuestions(questions : NSArray){
         for question in questions {
-            if !sharedData.questions.containsObject(question){
+            if !(sharedData.questions.containsObject(question)){
                 sharedData.questions.addObject(question)
             }
+            
         }
+        
         
     }
     
