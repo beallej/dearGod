@@ -17,6 +17,9 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
+        
         //sharedData.brain.getAllQuestions()
         self.view.backgroundColor = sharedData.backgroundColor
         self.tableView.backgroundColor = sharedData.backgroundColor
@@ -47,6 +50,10 @@ class MainViewController: UIViewController {
     
     func refresh(){
         print("meow")
+    }
+    
+    func checkWithBrainForTableContentsMethod() {
+        
     }
 
 

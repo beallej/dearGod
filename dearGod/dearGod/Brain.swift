@@ -126,7 +126,7 @@ class Brain {
                     // TODO
                 }
                 else if(requestType == RequestType.GetAllQuestions) {
-                    // TODO
+                    NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
                 }
                 else if(requestType == RequestType.GetQuestion) {
                     // TODO
