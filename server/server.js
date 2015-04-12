@@ -62,9 +62,8 @@ router.route("/questions")
             {}, { limit: 50 }, function(err, questions) {
             if (err) {
                 res.send(err);
-            } else {
-                res.json(questions);
             }
+            res.json(questions);
         })
     })
 
@@ -100,6 +99,10 @@ router.route("/questions/:question_id")
     // update question with new answer
     .put(function(req, res) {
         Question.findById(req.params.question_id, function(err, question) {
+            if (question == null) {
+                res.send(err);
+            }
+
             var answer = req.body.answer;
             question.a = answer;
             question.dateAnswered = new Date();
@@ -121,22 +124,30 @@ router.route("/questions/answer/:id")
 
     // sends a question to a user
     .get(function(req, res) {
-        Question.find( { rejectCount: { $lt: 6 }, currentlyAnswering: null }, function(err, questions) {
+        Question.find( {a: null, rejectCount: { $lt: 6 }, $or: [ { currentlyAnswering: null },
+            { dateAnswered: {$lt : new Date(new Date().getTime() - 60000) } } ] }, function(err, questions) {
             if (err) {
                 res.send(err);
             } else {
                 var rand = Math.floor(Math.random() * questions.length);
                 var chosenQuestion = questions[rand];
 
+                if (chosenQuestion == null) {
+                    res.json({ });
+                    return;
+                }
+
                 // set currently answering
                 chosenQuestion.currentlyAnswering = req.params.id;
+                chosenQuestion.dateAnswered = new Date();
+                chosenQuestion.rejectCount += 1;
                 chosenQuestion.save();
 
-                setTimeout(function() {
-                    chosenQuestion.rejectCount += 1;
-                    chosenQuestion.currentlyAnswering = null;
-                    chosenQuestion.save();
-                }, 60000);
+                // setTimeout(function() {
+                //     chosenQuestion.rejectCount += 1;
+                //     chosenQuestion.currentlyAnswering = null;
+                //     chosenQuestion.save();
+                // }, 60000);
                 res.json(chosenQuestion);
             }
         });
