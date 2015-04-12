@@ -13,4 +13,5 @@ enum RequestType {
     case AnswerQuestion
     case GetAllQuestions
     case GetQuestion
+    case GetQuestionToAnswer
 }

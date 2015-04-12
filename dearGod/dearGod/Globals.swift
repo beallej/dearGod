@@ -15,12 +15,14 @@ class Singleton {
     var brain: Brain = Brain()
     var holyPoints: String
     var questions: NSMutableArray = NSMutableArray()
+    var questionToAnswer: String = ""
+    
     var borderColor: CGColor = UIColor.grayColor().CGColor
     
     init() {
         holyPoints = brain.openFile("holyPoints", fileExtension: "txt")!
-
     }
+    
     func changePoints(delta: Int){
         var newPts = sharedData.holyPoints.toInt()!+delta
         let newHolyString = String(newPts)

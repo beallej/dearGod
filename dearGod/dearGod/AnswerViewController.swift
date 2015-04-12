@@ -23,6 +23,9 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     var timer = NSTimer()
     var counter = 5
     
+    // 0 = no; 1 = waiting for server; 2 = yes
+    var hasQuestionToAnswer = 0
+    
     func counterUpdate() {
         if counter > -1{
             timeLabel.text=String(counter--)
@@ -33,6 +36,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
                 self.view.backgroundColor = UIColor.blackColor()
                 self.timeLabel.textColor = sharedData.backgroundColor
                 self.timeLabel.text="Time's Up!"
+                self.hasQuestionToAnswer = 0;
             }
             counter--
         }
@@ -70,12 +74,24 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.submitB.layer.cornerRadius = 10.0
         self.passB.layer.cornerRadius = 10.0
         
-        // Do any additional setup after loading the view, typically from a nib.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForQuestionToAnswerMethod:", name: "checkWithBrainForQuestionToAnswer", object: nil);
     }
+    
+    func checkWithBrainForQuestionToAnswerMethod(notification: NSNotification) {
+        NSLog("Fire!");
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.holyAnswer.text=sharedData.holyPoints
-
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        if(self.hasQuestionToAnswer == 0) {
+            // ask brain for question to answer
+            self.hasQuestionToAnswer = 1
+            sharedData.brain.getQuestionToAnswer()
+        }
+        
     }
     
     @IBAction func buttonAction(sender: UIButton) {
