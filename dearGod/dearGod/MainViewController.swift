@@ -22,22 +22,22 @@ class MainViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
 
-                
+        
         scrollView.userInteractionEnabled = true
         scrollView.scrollEnabled = true
         scrollView.contentSize = CGSizeMake(500, 1000)
         scrollView.directionalLockEnabled = true
-       
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.scrollView.addSubview(refreshControl)
         sharedData.brain.getAllQuestions()
-        for question in sharedData.questions{
-            print(question[1]["q"])
-            
-        }
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: Selector(self.refresh()), forControlEvents:.ValueChanged)
         
+        
+        self.scrollView.addSubview(refreshControl)
+        
+        
+        
+                
 
     }
     override func viewDidAppear(animated: Bool) {
@@ -52,11 +52,23 @@ class MainViewController: UIViewController {
     }
     
     func refresh(){
-        print("meow")
+        sharedData.brain.getAllQuestions()
+        
     }
     
+    
+
+
+  
+    
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        NSLog("Fire!");
+        print ("dfd")
+        for question in sharedData.questions{
+            print(question)
+            print ("\n")
+            
+        }
+
     }
 
 

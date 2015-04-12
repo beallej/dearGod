@@ -9,7 +9,8 @@
 import Foundation
 
 class Brain {
-    let converter : JSONConverter;
+    let converter : JSONConverter
+ 
     
     init()  {
         converter = JSONConverter()
@@ -126,6 +127,7 @@ class Brain {
                     // TODO
                 }
                 else if(requestType == RequestType.GetAllQuestions) {
+                    self.saveQuestions(question)
                     NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
                 }
                 else if(requestType == RequestType.GetQuestion) {
@@ -139,10 +141,12 @@ class Brain {
     
     func saveQuestions(questions : NSArray){
         for question in questions {
-            if !sharedData.questions.containsObject(question){
+            if !(sharedData.questions.containsObject(question)){
                 sharedData.questions.addObject(question)
             }
+            
         }
+        
         
     }
     
