@@ -28,7 +28,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     
     func counterUpdate() {
         if counter > -1{
-            timeLabel.text=String(counter--)
+            timeLabel.text="Time: "+String(counter--)
         }
         else if counter == -1 {
             
@@ -61,7 +61,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = sharedData.backgroundColor
-        timeLabel.text = String(counter)
+        timeLabel.text = "Time "+String(counter)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
         self.answerText.delegate = self
         self.answerText.text = self.placeholder
@@ -72,6 +72,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.answerText.layer.borderColor = sharedData.borderColor
         self.answerText.contentInset = UIEdgeInsetsMake(4,8,0,0)
         self.answerText.editable = false
+        self.questionLabel.text="Waiting for Questions..."
         self.submitB.layer.cornerRadius = 10.0
         self.passB.layer.cornerRadius = 10.0
         
@@ -81,12 +82,13 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     
     func checkWithBrainForQuestionToAnswerMethod(notification: NSNotification) {
         self.questionLabel.text=sharedData.questionToAnswer
-        //self.answerText.editable = true
+        self.answerText.editable = true
+        self.hasQuestionToAnswer = 2
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.holyAnswer.text=sharedData.holyPoints
+        //self.holyAnswer.text=sharedData.holyPoints
         
         // Do any additional setup after loading the view, typically from a nib.
         if(self.hasQuestionToAnswer == 0) {
@@ -94,7 +96,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             self.hasQuestionToAnswer = 1
             
             sharedData.brain.getQuestionToAnswer()
-            self.answerText.editable = true
         }
     }
     
@@ -102,9 +103,15 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         if sender==self.submitB{
             timer.invalidate()
             sharedData.changePoints(10)
-            self.holyAnswer.text=sharedData.holyPoints
+            //self.holyAnswer.text=sharedData.holyPoints
             let answer = self.answerText.text
-            sharedData.brain.answerQuestion(sharedData.questionToAnswerID, answer: answer)
+            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+            if answer.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
+                sharedData.brain.answerQuestion(sharedData.questionToAnswerID, answer: answer)
+                
+            }
+            
+            
             self.textViewDidEndEditing(self.answerText)
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 

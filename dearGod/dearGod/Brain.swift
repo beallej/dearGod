@@ -56,7 +56,6 @@ class Brain {
     func getQuestionToAnswer() {
         if(myID != "") {
             getRequest(urlNgrokgetQ+myID, requestType: RequestType.GetQuestionToAnswer)
-            print("has Id")
         }
     }
     
