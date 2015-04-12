@@ -5,7 +5,7 @@ var QuestionSchema = new Schema({
     q: String,
     a: String,
     rejectCount: Number,
-    answered: Boolean,
+    currentlyAnswering: String,
     askerId: String
 });
 
