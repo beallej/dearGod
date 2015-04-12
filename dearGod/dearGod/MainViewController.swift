@@ -96,7 +96,7 @@ class MainViewController: UIViewController {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         var screenWidth = Int(screenSize.width)
         var questView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengthq))
-        questView.font = UIFont (name: "Avenir Book", size: 18)
+        questView.font = UIFont (name: "Avenir-Black", size: 18)
         self.view.addSubview(questView)
         questView.text=q
         questView.editable = false

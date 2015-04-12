@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // UITextView        
+        // NSMutableAttributedString* text = [textView textStorage];
+        // [text applyFontTraits:NSBoldFontMask range:NSMakeRange(0,[text length])];
+        
         return true
     }
 
