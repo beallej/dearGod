@@ -127,9 +127,8 @@ router.route("/questions/answer/:id")
 router.route("/users/")
 
     // add new user with UUID :UUID and ip :ip
-    .post(function(req, res) {
+    .get(function(req, res) {
         var user = new User();
-        user.ip = req.body.ip;
 
         user.save(function(err, user) {
             if (err) {
