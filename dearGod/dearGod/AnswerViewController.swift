@@ -21,7 +21,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     let questionID = "69"
     
     var timer = NSTimer()
-    var counter = 5
+    var counter = 69
     
     // 0 = no; 1 = waiting for server; 2 = yes
     var hasQuestionToAnswer = 0
@@ -71,14 +71,17 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.answerText.layer.borderWidth = 1.0
         self.answerText.layer.borderColor = sharedData.borderColor
         self.answerText.contentInset = UIEdgeInsetsMake(4,8,0,0)
+        self.answerText.editable = false
         self.submitB.layer.cornerRadius = 10.0
         self.passB.layer.cornerRadius = 10.0
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForQuestionToAnswerMethod:", name: "checkWithBrainForQuestionToAnswer", object: nil);
     }
     
     func checkWithBrainForQuestionToAnswerMethod(notification: NSNotification) {
-        NSLog("Fire!");
+        self.questionLabel.text=sharedData.questionToAnswer
+        //self.answerText.editable = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -89,7 +92,9 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         if(self.hasQuestionToAnswer == 0) {
             // ask brain for question to answer
             self.hasQuestionToAnswer = 1
+            
             sharedData.brain.getQuestionToAnswer()
+            self.answerText.editable = true
         }
     }
     
@@ -99,7 +104,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             sharedData.changePoints(10)
             self.holyAnswer.text=sharedData.holyPoints
             let answer = self.answerText.text
-            //sharedData.brain.answerQuestion(questionID, answer: answer)
+            sharedData.brain.answerQuestion(sharedData.questionToAnswerID, answer: answer)
             self.textViewDidEndEditing(self.answerText)
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 
@@ -112,16 +117,16 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         }
     }
     func textViewDidEndEditing(textView: UITextView) {
-        textView.text = self.placeholder
-        textView.textColor = UIColor.grayColor()
-        textView.endEditing(true)
+        self.answerText.text = self.placeholder
+        self.answerText.textColor = UIColor.grayColor()
+        self.answerText.endEditing(true)
         
     }
     func textViewDidBeginEditing(textView: UITextView) {
-        textView.text = ""
-        textView.textColor = UIColor.blackColor()
+        self.answerText.text = ""
+        self.answerText.textColor = UIColor.blackColor()
         self.timer.invalidate()
-        self.timeLabel.removeFromSuperview()
+        self.timeLabel.text=" "
         
         
     }

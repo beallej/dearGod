@@ -52,13 +52,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
         
     
     }
-//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-//        if (count(textView.text) - range.length) > 140 {
-//            return true
-//        }
-//        return false
-//        
-//    }
+
     
     func textViewDidChange(textView: UITextView) {
         if count(textView.text) > 150 {

@@ -11,6 +11,11 @@ import Foundation
 class Brain {
     let converter : JSONConverter
     var myID = ""
+    var urlHeroku = "http://deargod.herokuapp.com"
+    var urlNgrok = "http://deargod.ngrok.com/api/questions"
+    var urlNgrokid = "http://deargod.ngrok.com/api/users/"
+    var urlNgrokgetQ = "http://deargod.ngrok.com/api/questions/answer/"
+    
     
     init()  {
         converter = JSONConverter()
@@ -23,14 +28,14 @@ class Brain {
     func askQuestion(question: String) {
         if(myID != "") {
             var dic : [String:String]
-            dic = ["question": question]
-            postRequest("http://deargod.ngrok.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
+            dic = ["question": question, "userId": myID]
+            postRequest("http://deargod.herokuapp.com/api/questions", requestDic: dic, requestType: RequestType.NewQuestion)
         }
     }
     
     func getAllQuestions() {
         if(myID != "") {
-            getRequest("http://deargod.ngrok.com/api/questions", requestType: RequestType.GetAllQuestions)
+            getRequest(urlNgrok, requestType: RequestType.GetAllQuestions)
         }
     }
     
@@ -38,24 +43,25 @@ class Brain {
         if(myID != "") {
             var dic : [String:String]
             dic = ["answer": answer]
-            postRequest("http://deargod.ngrok.com/api/questions" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+            putRequest(urlNgrok + "/" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
         }
     }
     
     func getQuestion(questionID: String) {
         if(myID != "") {
-            getRequest("http://deargod.ngrok.com/api/questions"+questionID, requestType: RequestType.GetQuestion)
+            getRequest(urlNgrok+questionID, requestType: RequestType.GetQuestion)
         }
     }
     
     func getQuestionToAnswer() {
         if(myID != "") {
-            getRequest("http://deargod.ngrok.com/api/questions/answer/"+myID, requestType: RequestType.GetQuestionToAnswer)
+            getRequest(urlNgrokgetQ+myID, requestType: RequestType.GetQuestionToAnswer)
+            print("has Id")
         }
     }
     
     func askForID() {
-        getRequest("http://deargod.ngrok.com/api/users/", requestType: RequestType.GetID)
+        getRequest(urlNgrokid, requestType: RequestType.GetID)
     }
     
     func getRequest(requestString: String, requestType: RequestType) {
@@ -132,14 +138,24 @@ class Brain {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
         if(response.length > 5) {
             var err : NSErrorPointer = NSErrorPointer()
-            if(requestType == RequestType.GetID) {
-                if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary{
-                    myID = question.objectForKey("id") as! String
-                    saveFile("myID", fileExtension: "txt", myID)
+            if(requestType == RequestType.GetID || requestType == RequestType.GetQuestionToAnswer) {
+                if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary {
+                    if(requestType == RequestType.GetID) {
+                        myID = question.objectForKey("id") as! String
+                        saveFile("myID", fileExtension: "txt", myID)
+                    }
+                    else if(requestType == RequestType.GetQuestionToAnswer) {
+                        // todo
+                        sharedData.questionToAnswer = question.objectForKey("q") as! String
+                        sharedData.questionToAnswerID = question.objectForKey("_id") as! String
+                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
+                    }
+                    
                 }
             }
             else {
                 if var question : NSArray = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSArray{
+                    
                     if(requestType == RequestType.NewQuestion) {
                         // TODO - WE DON'T NEED THIS
                     }
@@ -147,15 +163,12 @@ class Brain {
                         // TODO - WE DON'T NEED THIS
                     }
                     else if(requestType == RequestType.GetAllQuestions) {
+                        self.saveQuestions(question)
+                        
                         NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForTableContents", object: nil)
                     }
                     else if(requestType == RequestType.GetQuestion) {
                         // TODO - WE DON'T NEED THIS
-                    }
-                    else if(requestType == RequestType.GetQuestionToAnswer) {
-                        // todo
-                        sharedData.questionToAnswer = "insert question to answer here"
-                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
                     }
                 }
                 else {
@@ -176,6 +189,7 @@ class Brain {
         
         
     }
+    
     
     /*
     * This method returns the contents of the given file
