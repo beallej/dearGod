@@ -52,8 +52,8 @@ class MainViewController: UIViewController {
         print("meow")
     }
     
-    func checkWithBrainForTableContentsMethod() {
-        
+    func checkWithBrainForTableContentsMethod(notification: NSNotification) {
+        NSLog("Fire!");
     }
 
 
