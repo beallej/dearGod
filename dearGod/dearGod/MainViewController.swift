@@ -110,13 +110,14 @@ class MainViewController: UIViewController {
         var questView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengthq))
         //var boldFont: UIFont = UIFont.preferredFontForTextStyle("bold"))
         questView.scrollsToTop=false
-        questView.font = UIFont(name: "Avenir Black", size: 18)
+        questView.font = UIFont(name: "Avenir-Black", size: 18)
         questView.layer.cornerRadius = 10.0
         questView.layer.borderWidth = 1.0
         questView.layer.borderColor = sharedData.borderColor
         questView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
 
         self.scrollView.addSubview(questView)
+
         questView.text=q
         questView.editable = false
         space += Int(lengthq + 5)

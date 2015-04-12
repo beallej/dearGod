@@ -91,7 +91,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             self.hasQuestionToAnswer = 1
             sharedData.brain.getQuestionToAnswer()
         }
-        
     }
     
     @IBAction func buttonAction(sender: UIButton) {
