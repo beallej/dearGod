@@ -110,7 +110,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="View All" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="View All" image="viewbutton" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="holyView" destination="7HX-mp-TU2" id="bJW-HO-fCz"/>
                         <outlet property="scrollView" destination="Wpz-af-fIw" id="8Pb-7y-m2f"/>
@@ -153,8 +153,7 @@
                                         <exclude reference="M4m-VR-Nnv"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="354" y="31" width="30" height="21"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="M4m-VR-Nnv"/>
                                     </mask>
@@ -173,8 +172,7 @@
                                         <exclude reference="tXK-rh-SlI"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="217" width="368" height="166"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="tXK-rh-SlI"/>
                                     </mask>
@@ -193,8 +191,7 @@
                                         <exclude reference="jGz-0j-irh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="87" width="368" height="92"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="jGz-0j-irh"/>
                                     </mask>
@@ -216,9 +213,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="35" y="489" width="330" height="21"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUO-6y-CkA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -348,7 +342,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Answer" id="2bP-qY-mE0"/>
+                    <tabBarItem key="tabBarItem" title="Answer" image="check-1" selectedImage="check-1" id="2bP-qY-mE0"/>
                     <connections>
                         <outlet property="answerText" destination="9QE-Yt-xRw" id="Pjc-Op-Z1Z"/>
                         <outlet property="holyAnswer" destination="scP-tg-2HB" id="8hP-84-Mxy"/>
@@ -563,7 +557,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ask" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Ask" image="question" selectedImage="question" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="askField" destination="nVe-jq-JmJ" id="7Ls-dz-RSb"/>
                         <outlet property="cancelButton" destination="tfK-cc-iA1" id="2ZU-xr-iuk"/>
@@ -599,9 +593,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check-1" width="30" height="28"/>
         <image name="deargodlogo" width="1300" height="800"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="question" width="17" height="30"/>
+        <image name="viewbutton" width="40" height="40"/>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
 </document>
