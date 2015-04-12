@@ -97,7 +97,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    var space = 70
+    var space = 40
     var lengthq = 30
     var lengtha = 30
     func displayQA(question: String, answer: String){
