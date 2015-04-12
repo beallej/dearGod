@@ -87,7 +87,6 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.holyAnswer.text=sharedData.holyPoints
-        
         // Do any additional setup after loading the view, typically from a nib.
         if(self.hasQuestionToAnswer == 0) {
             // ask brain for question to answer
