@@ -17,14 +17,12 @@ class Brain {
     var urlNgrokgetQ = "http://deargod.ngrok.com/api/questions/answer/"
     
     
-    
     init()  {
         converter = JSONConverter()
         myID = openFile("myID", fileExtension: "txt")!
         if(myID == "") {
             askForID()
         }
-        
     }
     
     func askQuestion(question: String) {
@@ -37,18 +35,15 @@ class Brain {
     
     func getAllQuestions() {
         if(myID != "") {
-            
-
             getRequest(urlNgrok, requestType: RequestType.GetAllQuestions)
         }
     }
     
     func answerQuestion(questionID: String, answer: String) {
-        
         if(myID != "") {
             var dic : [String:String]
             dic = ["answer": answer]
-            postRequest(urlNgrok + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+            putRequest(urlNgrok + "/" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
         }
     }
     
@@ -59,7 +54,6 @@ class Brain {
     }
     
     func getQuestionToAnswer() {
-        
         if(myID != "") {
             getRequest(urlNgrokgetQ+myID, requestType: RequestType.GetQuestionToAnswer)
             print("has Id")
@@ -143,14 +137,20 @@ class Brain {
     func processHTTPRequest(response: NSData, requestType: RequestType) {
         // convert from NSData to NSArray containing 1 or more NSDictionary objects
         if(response.length > 5) {
-            
-            
             var err : NSErrorPointer = NSErrorPointer()
-            if(requestType == RequestType.GetID) {
+            if(requestType == RequestType.GetID || requestType == RequestType.GetQuestionToAnswer) {
                 if var question : NSDictionary = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers , error: err) as? NSDictionary {
+                    if(requestType == RequestType.GetID) {
+                        myID = question.objectForKey("id") as! String
+                        saveFile("myID", fileExtension: "txt", myID)
+                    }
+                    else if(requestType == RequestType.GetQuestionToAnswer) {
+                        // todo
+                        sharedData.questionToAnswer = question.objectForKey("q") as! String
+                        sharedData.questionToAnswerID = question.objectForKey("_id") as! String
+                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
+                    }
                     
-                    myID = question.objectForKey("id") as! String
-                    saveFile("myID", fileExtension: "txt", myID)
                 }
             }
             else {
@@ -169,12 +169,6 @@ class Brain {
                     }
                     else if(requestType == RequestType.GetQuestion) {
                         // TODO - WE DON'T NEED THIS
-                    }
-                    else if(requestType == RequestType.GetQuestionToAnswer) {
-                        // todo
-                        sharedData.questionToAnswer = question[0]["q"] as! String
-                        print("iwokeuplikedis")
-                        NSNotificationCenter.defaultCenter().postNotificationName("checkWithBrainForQuestionToAnswer", object: nil)
                     }
                 }
                 else {
