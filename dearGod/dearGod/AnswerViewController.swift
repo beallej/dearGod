@@ -61,8 +61,8 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = sharedData.backgroundColor
-        timeLabel.text = "Time "+String(counter)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
+        timeLabel.text = " "//"Time "+String(counter)
+//        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
         self.answerText.delegate = self
         self.answerText.text = self.placeholder
         self.answerText.textColor = UIColor.grayColor()
@@ -72,7 +72,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.answerText.layer.borderColor = sharedData.borderColor
         self.answerText.contentInset = UIEdgeInsetsMake(4,8,0,0)
         self.answerText.editable = false
-        self.questionLabel.text="Waiting for Questions..."
+        self.questionLabel.text="No Questions Available"
         self.submitB.layer.cornerRadius = 10.0
         self.passB.layer.cornerRadius = 10.0
         
@@ -84,6 +84,8 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.questionLabel.text=sharedData.questionToAnswer
         self.answerText.editable = true
         self.hasQuestionToAnswer = 2
+        timeLabel.text = "Time "+String(counter)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("counterUpdate"), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -91,7 +93,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         //self.holyAnswer.text=sharedData.holyPoints
         
         // Do any additional setup after loading the view, typically from a nib.
-        if(self.hasQuestionToAnswer == 0) {
+        if(self.hasQuestionToAnswer != 2) {
             // ask brain for question to answer
             self.hasQuestionToAnswer = 1
             

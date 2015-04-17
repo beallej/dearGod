@@ -61,6 +61,18 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sharedData.brain.getAllQuestions()
+        for question in sharedData.questions{
+            if let quest = question["q"] as? String{
+                if !(contains(qList, quest)){
+                    if let ans = question["a"] as? String{
+                        displayQA(quest, answer:ans)
+                        qList.append(quest)
+                    }
+                    
+                }
+            }
+        }
+
         //self.holyView.text=sharedData.holyPoints
         
     }
@@ -97,7 +109,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    var space = 70
+    var space = 40
     var lengthq = 30
     var lengtha = 30
     func displayQA(question: String, answer: String){
