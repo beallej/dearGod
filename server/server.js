@@ -8,13 +8,11 @@ var express    = require("express"),
 
 
 // mongo setup
-var mongoose   = require("mongoose");
+var mongoose   = require("mongoose"),
+    database         = require("./db").db;
 
-// prod db
-mongoose.connect("mongodb://lbiester:HackISU2015@ds061741.mongolab.com:61741/deargod");
-
-// local db
-// mongoose.connect("mongodb://localhost:27017/deargod");
+// connect to database
+mongoose.connect(database);
 
 
 var Question = require("./models/question");
