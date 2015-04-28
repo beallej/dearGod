@@ -9,36 +9,36 @@
 import UIKit
 import CoreGraphics
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var refreshControl:UIRefreshControl!
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet var navBar: [UINavigationBar]!
-    @IBOutlet weak var scrollView: UIScrollView!
+    let cellIdentifier = "qaCellid"
+
+   
     @IBOutlet weak var holyView: UILabel!
-    var qList: [String]!
+    var qList: [(String, String)]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
 
-//        var question = "Man"
-//        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
-//        displayQA(question, answer:answer)
-//        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
-//        var answer2 = "Yo mama"
-//        displayQA(question2, answer:answer2)
-        qList=[String]()
+
+        qList=[(String, String)]()
         
-        self.scrollView.contentInset = UIEdgeInsetsMake(-20.0, 0.0, 0.0, 0.0)
+        //self.tableView.contentInset = UIEdgeInsetsMake(-20.0, 0.0, 0.0, 0.0)
         
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkWithBrainForTableContentsMethod:", name: "checkWithBrainForTableContents", object: nil);
 
         
-        self.scrollView.userInteractionEnabled = true
-        self.scrollView.scrollEnabled = true
-        self.scrollView.contentSize = CGSizeMake(500, 1000)
-        self.scrollView.directionalLockEnabled = true
+        self.tableView.userInteractionEnabled = true
+        self.tableView.scrollEnabled = true
+        self.tableView.contentSize = CGSizeMake(500, 1000)
+        self.tableView.directionalLockEnabled = true
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -61,17 +61,20 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sharedData.brain.getAllQuestions()
+        var tempQList = [(String, String)]()
         for question in sharedData.questions{
             if let quest = question["q"] as? String{
-                if !(contains(qList, quest)){
                     if let ans = question["a"] as? String{
-                        displayQA(quest, answer:ans)
-                        qList.append(quest)
-                    }
+                        if !containsTuple(qList, tuple: (quest, ans)){
+                            tempQList.append((quest, ans))
+                        }
                     
                 }
             }
         }
+        tempQList.extend(qList)
+        self.qList = tempQList
+        self.tableView.reloadData()
 
         //self.holyView.text=sharedData.holyPoints
         
@@ -95,71 +98,101 @@ class MainViewController: UIViewController {
   
     
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        
+        var tempQList = [(String, String)]()
         for question in sharedData.questions{
             if let quest = question["q"] as? String{
-                if !(contains(qList, quest)){
                     if let ans = question["a"] as? String{
-                        displayQA(quest, answer:ans)
-                    qList.append(quest)
+                        if !containsTuple(qList!, tuple: (quest, ans)){
+                            tempQList.append((quest, ans))
+                        
                     }
 
                 }
             }
         }
+        tempQList.extend(qList)
+        self.qList = tempQList
+        self.tableView.reloadData()
     }
     
-    var space = 40
-    var lengthq = 30
-    var lengtha = 30
-    func displayQA(question: String, answer: String){
-        var q = question
-        var a = answer
-        if (count(q)>40){
-            lengthq = Int(count(q)/25)*30
+    func containsTuple(tupleArray:[(String,String)], tuple:(String,String)) -> Bool {
+        for t: (String,String) in tupleArray{
+            if t.0 == tuple.0 && t.1 == tuple.1 {
+                return true
+            }
         }
-        if (count(a)>40){
-            lengtha = Int(count(a)/25)*30
-        }
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        var screenWidth = Int(screenSize.width)
-        var questView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengthq))
-        //var boldFont: UIFont = UIFont.preferredFontForTextStyle("bold"))
-        questView.scrollsToTop=false
-        questView.font = UIFont(name: "Avenir-Black", size: 18)
-        questView.layer.cornerRadius = 10.0
-        questView.layer.borderWidth = 1.0
-        questView.layer.borderColor = sharedData.borderColor
-        questView.userInteractionEnabled = false
-        questView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
-
-        self.scrollView.addSubview(questView)
-
-        questView.text=q
-        questView.editable = false
-        space += Int(lengthq + 5)
-        var ansView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengtha))
-        ansView.font = UIFont (name: "Avenir Book", size: 18)
-        self.scrollView.addSubview(ansView)
-        ansView.text=a
-        ansView.editable = false
-        ansView.scrollsToTop=false
-        ansView.userInteractionEnabled = false
-
-        ansView.layer.cornerRadius = 10.0
-        ansView.layer.borderWidth = 1.0
-        ansView.layer.borderColor = sharedData.borderColor
-        ansView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
-
-        space += Int(lengtha + 10)
-        lengthq = 30
-        lengtha = 30
-        
-        
-        self.scrollView.contentSize = CGSizeMake(CGFloat(screenWidth), CGFloat(space))
-       
+        return false
     }
-
-
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.qList.count
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! qaCell
+            cell.question.text = self.qList[indexPath.row].0
+            cell.answer.text = self.qList[indexPath.row].1
+        
+        return cell
+    }
+    
+   
+//    var space = 40
+//    var lengthq = 30
+//    var lengtha = 30
+//    func displayQA(question: String, answer: String){
+//        var q = question
+//        var a = answer
+//        if (count(q)>40){
+//            lengthq = Int(count(q)/25)*30
+//        }
+//        if (count(a)>40){
+//            lengtha = Int(count(a)/25)*30
+//        }
+//        let screenSize: CGRect = UIScreen.mainScreen().bounds
+//        var screenWidth = Int(screenSize.width)
+//        var questView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengthq))
+//        //var boldFont: UIFont = UIFont.preferredFontForTextStyle("bold"))
+//        questView.scrollsToTop=false
+//        questView.font = UIFont(name: "Avenir-Black", size: 18)
+//        questView.layer.cornerRadius = 10.0
+//        questView.layer.borderWidth = 1.0
+//        questView.layer.borderColor = sharedData.borderColor
+//        questView.userInteractionEnabled = false
+//        questView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
+//
+//        self.table.addSubview(questView)
+//
+//        questView.text=q
+//        questView.editable = false
+//        space += Int(lengthq + 5)
+//        var ansView: UITextView = UITextView (frame: CGRect(x: 10, y: space, width: screenWidth-20, height: lengtha))
+//        ansView.font = UIFont (name: "Avenir Book", size: 18)
+//        self.tableView.addSubview(ansView)
+//        ansView.text=a
+//        ansView.editable = false
+//        ansView.scrollsToTop=false
+//        ansView.userInteractionEnabled = false
+//
+//        ansView.layer.cornerRadius = 10.0
+//        ansView.layer.borderWidth = 1.0
+//        ansView.layer.borderColor = sharedData.borderColor
+//        ansView.contentInset = UIEdgeInsetsMake(-4,0,2,0);
+//
+//        space += Int(lengtha + 10)
+//        lengthq = 30
+//        lengtha = 30
+//        
+//        
+//        self.scrollView.contentSize = CGSizeMake(CGFloat(screenWidth), CGFloat(space))
+//       
+//    }
+//
+//
 }
 

@@ -13,6 +13,7 @@
 		28289B781AD97D3500AB8D6F /* QuickAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28289B771AD97D3500AB8D6F /* QuickAnimation.m */; };
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
+		BD286CD51AF03E4A0021B036 /* qaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD286CD41AF03E4A0021B036 /* qaCell.swift */; };
 		BD48AC961AD9750800A158A3 /* DismissAnswerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */; };
 		BD7DC93D1AE85D0E003AF9DD /* deargodicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7DC93C1AE85D0E003AF9DD /* deargodicon.png */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		28289B771AD97D3500AB8D6F /* QuickAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickAnimation.m; sourceTree = "<group>"; };
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		BD286CD41AF03E4A0021B036 /* qaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = qaCell.swift; sourceTree = "<group>"; };
 		BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnswerSegue.swift; sourceTree = "<group>"; };
 		BD7DC93C1AE85D0E003AF9DD /* deargodicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deargodicon.png; path = Images.xcassets/deargodlogo.imageset/deargodicon.png; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				BD9FE9421AD8C113007378E7 /* MainViewController.swift */,
 				BD9FE96C1AD90247007378E7 /* AnswerViewController.swift */,
 				BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */,
+				BD286CD41AF03E4A0021B036 /* qaCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */,
 				BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */,
 				28289B781AD97D3500AB8D6F /* QuickAnimation.m in Sources */,
+				BD286CD51AF03E4A0021B036 /* qaCell.swift in Sources */,
 				BD9FE98C1AD95D7A007378E7 /* Globals.swift in Sources */,
 				2813091E1AD9570200D6B5BF /* JSONConverter.m in Sources */,
 				28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */,
