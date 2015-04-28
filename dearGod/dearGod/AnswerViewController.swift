@@ -115,19 +115,21 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
             
             
             self.textViewDidEndEditing(self.answerText)
+            self.answerText.text = self.placeholder
+            self.answerText.textColor = UIColor.grayColor()
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 
         }
         else if sender==self.passB{
             self.textViewDidEndEditing(self.answerText)
+            self.answerText.text = self.placeholder
+            self.answerText.textColor = UIColor.grayColor()
             performSegueWithIdentifier("DismissAnswerSegueID", sender: self)
 
             
         }
     }
     func textViewDidEndEditing(textView: UITextView) {
-        self.answerText.text = self.placeholder
-        self.answerText.textColor = UIColor.grayColor()
         self.answerText.endEditing(true)
         
     }
@@ -138,6 +140,17 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.timeLabel.text=" "
         
         
+    }
+    func textView(textView: UITextView,
+        shouldChangeTextInRange range: NSRange,
+        replacementText text: String) -> Bool {
+            
+            if text=="\n" {
+                textView.resignFirstResponder()
+                return false
+            }
+            
+            return true
     }
     func textViewDidChange(textView: UITextView) {
         if count(textView.text) > 200 {

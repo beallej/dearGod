@@ -14,6 +14,7 @@
 		28BD3E471AD8F01D00FCC691 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */; };
 		28FF943A1AD965D3001EBA2B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF94391AD965D3001EBA2B /* RequestType.swift */; };
 		BD48AC961AD9750800A158A3 /* DismissAnswerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */; };
+		BD7DC93D1AE85D0E003AF9DD /* deargodicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7DC93C1AE85D0E003AF9DD /* deargodicon.png */; };
 		BD9FE9411AD8C113007378E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9401AD8C113007378E7 /* AppDelegate.swift */; };
 		BD9FE9431AD8C113007378E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9421AD8C113007378E7 /* MainViewController.swift */; };
 		BD9FE9451AD8C113007378E7 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9FE9441AD8C113007378E7 /* AskViewController.swift */; };
@@ -47,6 +48,7 @@
 		28BD3E461AD8F01D00FCC691 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		28FF94391AD965D3001EBA2B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		BD48AC951AD9750800A158A3 /* DismissAnswerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnswerSegue.swift; sourceTree = "<group>"; };
+		BD7DC93C1AE85D0E003AF9DD /* deargodicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deargodicon.png; path = Images.xcassets/deargodlogo.imageset/deargodicon.png; sourceTree = "<group>"; };
 		BD9FE93B1AD8C113007378E7 /* dearGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dearGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9FE93F1AD8C113007378E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD9FE9401AD8C113007378E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				BD9FE9401AD8C113007378E7 /* AppDelegate.swift */,
 				28289B761AD97D3500AB8D6F /* QuickAnimation.h */,
 				28289B771AD97D3500AB8D6F /* QuickAnimation.m */,
+				BD7DC93C1AE85D0E003AF9DD /* deargodicon.png */,
 				BD9FE9491AD8C113007378E7 /* Images.xcassets */,
 				BD9FE94B1AD8C113007378E7 /* LaunchScreen.xib */,
 				BD9FE96E1AD91202007378E7 /* holyPoints.txt */,
@@ -225,6 +228,7 @@
 				TargetAttributes = {
 					BD9FE93A1AD8C113007378E7 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = F32NER3Q9Y;
 					};
 					BD9FE9511AD8C114007378E7 = {
 						CreatedOnToolsVersion = 6.2;
@@ -257,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				281F3F891ADA0E0300955AE5 /* myID.txt in Resources */,
+				BD7DC93D1AE85D0E003AF9DD /* deargodicon.png in Resources */,
 				BD9FE96F1AD91202007378E7 /* holyPoints.txt in Resources */,
 				BD9FE9481AD8C113007378E7 /* Main.storyboard in Resources */,
 				BD9FE94D1AD8C113007378E7 /* LaunchScreen.xib in Resources */,

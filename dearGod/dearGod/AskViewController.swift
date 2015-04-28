@@ -23,6 +23,8 @@ class AskViewController: UIViewController, UITextViewDelegate {
             //self.holyAsk.text=sharedData.holyPoints
             let question = self.askField.text
             self.textViewDidEndEditing(self.askField)
+            self.askField.text = self.placeholder
+            self.askField.textColor = UIColor.grayColor()
             let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
             if question.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
                 sharedData.brain.askQuestion(question)
@@ -32,6 +34,8 @@ class AskViewController: UIViewController, UITextViewDelegate {
 
         }
         else if sender == self.cancelButton{
+            self.askField.text = self.placeholder
+            self.askField.textColor = UIColor.grayColor()
             self.textViewDidEndEditing(self.askField)           
             
             
@@ -45,8 +49,7 @@ class AskViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        textView.text = self.placeholder
-        textView.textColor = UIColor.grayColor()
+
         textView.endEditing(true)
         
     }
@@ -55,6 +58,17 @@ class AskViewController: UIViewController, UITextViewDelegate {
         textView.textColor = UIColor.blackColor()
         
     
+    }
+    func textView(textView: UITextView,
+        shouldChangeTextInRange range: NSRange,
+        replacementText text: String) -> Bool {
+    
+        if text=="\n" {
+            textView.resignFirstResponder()
+            return false      
+        }
+    
+    return true
     }
     
 

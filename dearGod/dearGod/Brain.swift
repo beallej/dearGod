@@ -11,7 +11,9 @@ import Foundation
 class Brain {
     let converter : JSONConverter
     var myID = ""
-    var urlHeroku = "http://deargod.herokuapp.com"
+    var urlHeroku = "http://deargod.herokuapp.com/api/questions"
+    var urlHerokuid = "http://deargod.herokuapp.com/api/users/"
+    var urlHerokugetQ = "http://deargod.herokuapp.com/api/questions/answer/"
     var urlNgrok = "http://deargod.ngrok.com/api/questions"
     var urlNgrokid = "http://deargod.ngrok.com/api/users/"
     var urlNgrokgetQ = "http://deargod.ngrok.com/api/questions/answer/"
@@ -35,7 +37,7 @@ class Brain {
     
     func getAllQuestions() {
         if(myID != "") {
-            getRequest(urlNgrok, requestType: RequestType.GetAllQuestions)
+            getRequest(urlHeroku, requestType: RequestType.GetAllQuestions)
         }
     }
     
@@ -43,24 +45,24 @@ class Brain {
         if(myID != "") {
             var dic : [String:String]
             dic = ["answer": answer]
-            putRequest(urlNgrok + "/" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
+            putRequest(urlHeroku + "/" + questionID, requestDic: dic, requestType: RequestType.AnswerQuestion)
         }
     }
     
     func getQuestion(questionID: String) {
         if(myID != "") {
-            getRequest(urlNgrok+questionID, requestType: RequestType.GetQuestion)
+            getRequest(urlHeroku+questionID, requestType: RequestType.GetQuestion)
         }
     }
     
     func getQuestionToAnswer() {
         if(myID != "") {
-            getRequest(urlNgrokgetQ+myID, requestType: RequestType.GetQuestionToAnswer)
+            getRequest(urlHerokugetQ+myID, requestType: RequestType.GetQuestionToAnswer)
         }
     }
     
     func askForID() {
-        getRequest(urlNgrokid, requestType: RequestType.GetID)
+        getRequest(urlHerokuid, requestType: RequestType.GetID)
     }
     
     func getRequest(requestString: String, requestType: RequestType) {
