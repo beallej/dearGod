@@ -263,6 +263,7 @@
                                 <rect key="frame" x="494" y="416" width="90" height="47"/>
                                 <color key="backgroundColor" red="0.41098180200000001" green="0.52100389140000003" blue="0.96421243690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="FCc-Ry-9ib"/>
                                     <constraint firstAttribute="width" constant="90" id="Thy-gT-G6t">
                                         <variation key="heightClass=regular-widthClass=compact" constant="125"/>
                                     </constraint>
@@ -337,6 +338,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bUO-6y-CkA" secondAttribute="trailing" constant="41" id="1f8-cx-1Ct">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="bUO-6y-CkA" firstAttribute="height" secondItem="nme-D0-luK" secondAttribute="height" id="1pH-qO-TBg"/>
                             <constraint firstItem="9QE-Yt-xRw" firstAttribute="leading" secondItem="EAR-Hy-Qbr" secondAttribute="leadingMargin" id="3Y3-lJ-JeE"/>
                             <constraint firstItem="gjM-KO-UPu" firstAttribute="centerX" secondItem="TeB-7O-il1" secondAttribute="centerX" id="BRX-bh-SKx"/>
                             <constraint firstItem="iVv-v1-ZUL" firstAttribute="top" secondItem="bUO-6y-CkA" secondAttribute="bottom" constant="26" id="Bil-jr-grO">
