@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="qaCellid" rowHeight="125" id="crd-Sc-bcQ" customClass="qaCell" customModule="dearGod" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="qaCellid" rowHeight="125" id="crd-Sc-bcQ" customClass="qaCell" customModule="dearGod" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="crd-Sc-bcQ" id="HMO-W0-Bde">
@@ -63,16 +63,21 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Question" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czf-HE-q45">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                        <rect key="frame" x="8" y="8" width="384" height="49"/>
+                                                    </variation>
                                                 </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="answer" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eM-pq-yeH">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                        <rect key="frame" x="8" y="67" width="384" height="49"/>
                                                     </variation>
                                                 </textView>
                                             </subviews>
@@ -104,13 +109,6 @@
                                                     <exclude reference="3eM-pq-yeH"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="9V7-Te-F6E"/>
-                                                    <exclude reference="CSa-MX-7gN"/>
-                                                    <exclude reference="RUn-g2-GRE"/>
-                                                    <exclude reference="Sap-NP-P67"/>
-                                                    <exclude reference="kgV-8j-6LA"/>
-                                                    <exclude reference="kjt-3H-afL"/>
-                                                    <exclude reference="mLo-HE-VxA"/>
                                                     <exclude reference="8kf-cM-ikk"/>
                                                     <exclude reference="DcF-gb-ZSi"/>
                                                     <exclude reference="IFo-id-Xju"/>
@@ -120,6 +118,13 @@
                                                     <exclude reference="dim-oP-Wpf"/>
                                                     <exclude reference="rJr-u5-oPE"/>
                                                     <exclude reference="v7V-UQ-BgA"/>
+                                                    <exclude reference="9V7-Te-F6E"/>
+                                                    <exclude reference="CSa-MX-7gN"/>
+                                                    <exclude reference="RUn-g2-GRE"/>
+                                                    <exclude reference="Sap-NP-P67"/>
+                                                    <exclude reference="kgV-8j-6LA"/>
+                                                    <exclude reference="kjt-3H-afL"/>
+                                                    <exclude reference="mLo-HE-VxA"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -128,13 +133,6 @@
                                                     <include reference="3eM-pq-yeH"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="9V7-Te-F6E"/>
-                                                    <include reference="CSa-MX-7gN"/>
-                                                    <exclude reference="RUn-g2-GRE"/>
-                                                    <include reference="Sap-NP-P67"/>
-                                                    <include reference="kgV-8j-6LA"/>
-                                                    <exclude reference="kjt-3H-afL"/>
-                                                    <include reference="mLo-HE-VxA"/>
                                                     <include reference="8kf-cM-ikk"/>
                                                     <include reference="DcF-gb-ZSi"/>
                                                     <include reference="IFo-id-Xju"/>
@@ -144,6 +142,13 @@
                                                     <exclude reference="dim-oP-Wpf"/>
                                                     <exclude reference="rJr-u5-oPE"/>
                                                     <exclude reference="v7V-UQ-BgA"/>
+                                                    <include reference="9V7-Te-F6E"/>
+                                                    <include reference="CSa-MX-7gN"/>
+                                                    <exclude reference="RUn-g2-GRE"/>
+                                                    <include reference="Sap-NP-P67"/>
+                                                    <include reference="kgV-8j-6LA"/>
+                                                    <exclude reference="kjt-3H-afL"/>
+                                                    <include reference="mLo-HE-VxA"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -154,7 +159,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="687"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="687"/>
                                 </variation>
                             </tableView>
                         </subviews>

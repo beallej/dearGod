@@ -27,7 +27,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView?.dataSource = self
 
 
-        qList=[(String, String)]()
+        self.qList=[(String, String)]()
         
         //self.tableView.contentInset = UIEdgeInsetsMake(-20.0, 0.0, 0.0, 0.0)
         
@@ -43,39 +43,47 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: Selector(self.refresh()), forControlEvents:.ValueChanged)
-        var question = "Man"
-        var answer = "Yo mama is the best biathohfa ever don't you ever forget it"
-        //displayQA(question, answer:answer)
-        var question2 = "Who's the prettiest girl in the world? Jesus won't you count on me? Last time I met you"
-        var answer2 = "Yo mama"
-        //displayQA(question2, answer:answer2)
+        sharedData.brain.getAllQuestions()
+        
+        for question in sharedData.questions{
+            if let quest = question["q"] as? String{
+                if let ans = question["a"] as? String{
+                    if !containsTuple(self.qList, tuple: (quest, ans)){
+                        self.qList.append((quest, ans))
+                    }
+                    
+                }
+            }
+        }
+
+        self.tableView.reloadData()
         
         //self.scrollView.addSubview(refreshControl)
        
         
         
         
-                
 
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sharedData.brain.getAllQuestions()
-        var tempQList = [(String, String)]()
+        var tempQList = [String, String]()
         for question in sharedData.questions{
             if let quest = question["q"] as? String{
                     if let ans = question["a"] as? String{
-                        if !containsTuple(qList, tuple: (quest, ans)){
+                        if !containsTuple(self.qList, tuple: (quest, ans)){
                             tempQList.append((quest, ans))
                         }
-                    
+                        
                 }
             }
         }
-        tempQList.extend(qList)
+        for tuple: (String, String) in self.qList{
+            tempQList.append(tuple)
+        }
         self.qList = tempQList
         self.tableView.reloadData()
-
         //self.holyView.text=sharedData.holyPoints
         
     }
@@ -98,19 +106,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func checkWithBrainForTableContentsMethod(notification: NSNotification) {
-        var tempQList = [(String, String)]()
+        var tempQList = [String, String]()
         for question in sharedData.questions{
             if let quest = question["q"] as? String{
                     if let ans = question["a"] as? String{
-                        if !containsTuple(qList!, tuple: (quest, ans)){
+                        if !containsTuple(self.qList, tuple: (quest, ans)){
                             tempQList.append((quest, ans))
+                        }
                         
-                    }
+                    
 
                 }
             }
         }
-        tempQList.extend(qList)
+        for tuple: (String, String) in self.qList{
+            tempQList.append(tuple)
+        }
         self.qList = tempQList
         self.tableView.reloadData()
     }
@@ -136,8 +147,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! qaCell
             cell.question.text = self.qList[indexPath.row].0
+            cell.question.font = UIFont(name: "Avenir-Black", size: 16)
             cell.answer.text = self.qList[indexPath.row].1
-        
+            cell.answer.font = UIFont(name: "Avenir Book", size: 16)
         return cell
     }
     

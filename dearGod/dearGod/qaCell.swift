@@ -17,25 +17,25 @@ class qaCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        question.removeFromSuperview()
+        //question.removeFromSuperview()
         question.scrollsToTop=false
         question.font = UIFont(name: "Avenir-Black", size: 16)
         question.layer.cornerRadius = 10.0
         question.layer.borderWidth = 1.0
         question.layer.borderColor = sharedData.borderColor        
         question.userInteractionEnabled = false
-        question.contentInset = UIEdgeInsetsMake(-4,0,2,0);
-        self.addSubview(question)
+        question.contentInset = UIEdgeInsetsMake(-4,0,2,20);
+        //self.addSubview(question)
         
-        answer.removeFromSuperview()
+        //answer.removeFromSuperview()
         answer.scrollsToTop=false
-        answer.font = UIFont (name: "Avenir Book", size: 16)
+        answer.font = UIFont(name: "Avenir Book", size: 16)
         answer.layer.cornerRadius = 10.0
         answer.layer.borderWidth = 1.0
         answer.layer.borderColor = sharedData.borderColor
         answer.userInteractionEnabled = false
-        answer.contentInset = UIEdgeInsetsMake(-4,0,2,0);
-        self.addSubview(answer)
+        answer.contentInset = UIEdgeInsetsMake(-4,0,2,20);
+        //self.addSubview(answer)
     }
     
    
