@@ -11,7 +11,7 @@ import QuartzCore
 
 class AnswerViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionLabel: UITextView!
     @IBOutlet weak var holyAnswer: UILabel!
     @IBOutlet weak var answerText: UITextView!
    
@@ -73,6 +73,7 @@ class AnswerViewController: UIViewController, UITextViewDelegate {
         self.answerText.contentInset = UIEdgeInsetsMake(4,8,0,0)
         self.answerText.editable = false
         self.questionLabel.text="No Questions Available"
+        self.questionLabel.font = UIFont(name: "Avenir Book", size: 20)
         self.submitB.layer.cornerRadius = 10.0
         self.passB.layer.cornerRadius = 10.0
         
